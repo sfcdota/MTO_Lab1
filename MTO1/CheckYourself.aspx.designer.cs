@@ -33,336 +33,336 @@ namespace MTO1
 		protected global::System.Web.UI.WebControls.Menu MainMenu0;
 
 		/// <summary>
-		/// Label18 control.
+		/// CheckYourselfLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label18;
+		protected global::System.Web.UI.WebControls.Label CheckYourselfLabel;
 
 		/// <summary>
-		/// Label1 control.
+		/// QuestionLabel1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label1;
+		protected global::System.Web.UI.WebControls.Label QuestionLabel1;
 
 		/// <summary>
-		/// Label2 control.
+		/// Question1EnterLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label2;
+		protected global::System.Web.UI.WebControls.Label Question1EnterLabel;
 
 		/// <summary>
-		/// TextBox1 control.
+		/// AnswerTextBox1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox TextBox1;
+		protected global::System.Web.UI.WebControls.TextBox AnswerTextBox1;
 
 		/// <summary>
-		/// Button1 control.
+		/// GetAnswerButton1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button Button1;
+		protected global::System.Web.UI.WebControls.Button GetAnswerButton1;
 
 		/// <summary>
-		/// Label23 control.
+		/// AnswerLabel1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label23;
+		protected global::System.Web.UI.WebControls.Label AnswerLabel1;
 
 		/// <summary>
-		/// Label3 control.
+		/// QuestionLabel2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label3;
+		protected global::System.Web.UI.WebControls.Label QuestionLabel2;
 
 		/// <summary>
-		/// Label4 control.
+		/// Question2EnterLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label4;
+		protected global::System.Web.UI.WebControls.Label Question2EnterLabel;
 
 		/// <summary>
-		/// TextBox2 control.
+		/// AnswerTextBox2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox TextBox2;
+		protected global::System.Web.UI.WebControls.TextBox AnswerTextBox2;
 
 		/// <summary>
-		/// Button2 control.
+		/// GetAnswerButton2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button Button2;
+		protected global::System.Web.UI.WebControls.Button GetAnswerButton2;
 
 		/// <summary>
-		/// Label22 control.
+		/// AnswerLabel2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label22;
+		protected global::System.Web.UI.WebControls.Label AnswerLabel2;
 
 		/// <summary>
-		/// Label5 control.
+		/// QuestionLabel3 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label5;
+		protected global::System.Web.UI.WebControls.Label QuestionLabel3;
 
 		/// <summary>
-		/// RadioButtonList1 control.
+		/// Question3RadioButtonList control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+		protected global::System.Web.UI.WebControls.RadioButtonList Question3RadioButtonList;
 
 		/// <summary>
-		/// RadioButton1 control.
+		/// GetAnswerButton3 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RadioButton RadioButton1;
+		protected global::System.Web.UI.WebControls.Button GetAnswerButton3;
 
 		/// <summary>
-		/// RadioButton2 control.
+		/// AnswerLabel3 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RadioButton RadioButton2;
+		protected global::System.Web.UI.WebControls.Label AnswerLabel3;
 
 		/// <summary>
-		/// RadioButton3 control.
+		/// QuestionLabel4 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RadioButton RadioButton3;
+		protected global::System.Web.UI.WebControls.Label QuestionLabel4;
 
 		/// <summary>
-		/// RadioButton4 control.
+		/// Question4CheckBox1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.RadioButton RadioButton4;
+		protected global::System.Web.UI.WebControls.CheckBox Question4CheckBox1;
 
 		/// <summary>
-		/// Button3 control.
+		/// Question4CheckBox2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button Button3;
+		protected global::System.Web.UI.WebControls.CheckBox Question4CheckBox2;
 
 		/// <summary>
-		/// Label21 control.
+		/// Question4CheckBox3 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label21;
+		protected global::System.Web.UI.WebControls.CheckBox Question4CheckBox3;
 
 		/// <summary>
-		/// Label7 control.
+		/// Question4CheckBox4 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label7;
+		protected global::System.Web.UI.WebControls.CheckBox Question4CheckBox4;
 
 		/// <summary>
-		/// CheckBox1 control.
+		/// GetAnswerButton4 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+		protected global::System.Web.UI.WebControls.Button GetAnswerButton4;
 
 		/// <summary>
-		/// CheckBox2 control.
+		/// AnswerLabel4 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
+		protected global::System.Web.UI.WebControls.Label AnswerLabel4;
 
 		/// <summary>
-		/// CheckBox3 control.
+		/// QuestionLabel5 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBox3;
+		protected global::System.Web.UI.WebControls.Label QuestionLabel5;
 
 		/// <summary>
-		/// CheckBox4 control.
+		/// Question5Label1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.CheckBox CheckBox4;
+		protected global::System.Web.UI.WebControls.Label Question5Label1;
 
 		/// <summary>
-		/// Button4 control.
+		/// Question5DropDownList1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button Button4;
+		protected global::System.Web.UI.WebControls.DropDownList Question5DropDownList1;
 
 		/// <summary>
-		/// Label20 control.
+		/// Question5Label5 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label20;
+		protected global::System.Web.UI.WebControls.Label Question5Label5;
 
 		/// <summary>
-		/// Label9 control.
+		/// Question5Label2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label9;
+		protected global::System.Web.UI.WebControls.Label Question5Label2;
 
 		/// <summary>
-		/// Label10 control.
+		/// Question5DropDownList2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label10;
+		protected global::System.Web.UI.WebControls.DropDownList Question5DropDownList2;
 
 		/// <summary>
-		/// Label11 control.
+		/// Question5Label6 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label11;
+		protected global::System.Web.UI.WebControls.Label Question5Label6;
 
 		/// <summary>
-		/// Label12 control.
+		/// Question5Label3 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label12;
+		protected global::System.Web.UI.WebControls.Label Question5Label3;
 
 		/// <summary>
-		/// Label13 control.
+		/// Question5DropDownList3 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label13;
+		protected global::System.Web.UI.WebControls.DropDownList Question5DropDownList3;
 
 		/// <summary>
-		/// Label14 control.
+		/// Question5Label7 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label14;
+		protected global::System.Web.UI.WebControls.Label Question5Label7;
 
 		/// <summary>
-		/// Label15 control.
+		/// Question5Label4 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label15;
+		protected global::System.Web.UI.WebControls.Label Question5Label4;
 
 		/// <summary>
-		/// Label16 control.
+		/// Question5DropDownList4 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label16;
+		protected global::System.Web.UI.WebControls.DropDownList Question5DropDownList4;
 
 		/// <summary>
-		/// Label17 control.
+		/// Question5Label8 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label17;
+		protected global::System.Web.UI.WebControls.Label Question5Label8;
 
 		/// <summary>
-		/// Button5 control.
+		/// GetAnswerButton5 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button Button5;
+		protected global::System.Web.UI.WebControls.Button GetAnswerButton5;
 
 		/// <summary>
-		/// Label19 control.
+		/// AnswerLabel5 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label19;
+		protected global::System.Web.UI.WebControls.Label AnswerLabel5;
 	}
 }

@@ -25,17 +25,29 @@ namespace MTO1
         [StringLength(250)]
         public string Question_4 { get; set; }
 
-        [Required]
         [StringLength(70)]
-        public string Answer_1 { get; set; }
+        public string AnswerDescription1 { get; set; }
+
+        public int? Answer_1 { get; set; }
 
         [StringLength(70)]
-        public string Answer_2 { get; set; }
+        public string AnswerDescription2 { get; set; }
+
+        public int? Answer_2 { get; set; }
 
         [StringLength(70)]
-        public string Answer_3 { get; set; }
+        public string AnswerDescription3 { get; set; }
+
+        public int? Answer_3 { get; set; }
 
         [StringLength(70)]
-        public string Answer_4 { get; set; }
+        public string AnswerDescription4 { get; set; }
+
+        public int? Answer_4 { get; set; }
+
+        public int Type { get; set; }
+
+        [StringLength(400)]
+        public string Description { get; set; }
     }
 }

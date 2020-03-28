@@ -81,7 +81,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right" class="auto-style4">
+                                <td class="auto-style4">
                                     <asp:Label ID="TeacherLabel" runat="server" AssociatedControlID="ConfirmPassword">Teacher?</asp:Label>
                                 </td>
                                 <td class="auto-style3">
@@ -89,12 +89,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2">
+                                <td colspan="2">
                                     <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2" style="color:Red;">
+                                <td colspan="2" style="color:Red;">
                                     <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
                                 </td>
                             </tr>
