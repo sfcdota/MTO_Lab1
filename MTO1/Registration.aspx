@@ -8,7 +8,18 @@
     <title></title>
     <style type="text/css">
         .auto-style1 {
-            height: 26px;
+            height: 30px;
+            width: 132px;
+        }
+        .auto-style2 {
+            height: 30px;
+            width: 178px;
+        }
+        .auto-style3 {
+            width: 178px;
+        }
+        .auto-style4 {
+            width: 132px;
         }
     </style>
 </head>
@@ -16,75 +27,74 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:CreateUserWizard ID="CreateUserWizard1" runat="server">
+        <asp:CreateUserWizard ID="CreateUserWizard" runat="server" OnCreatingUser="CreateUserWizard1_CreatingUser">
             <WizardSteps>
                 <asp:CreateUserWizardStep runat="server">
                     <ContentTemplate>
                         <table>
                             <tr>
-                                <td align="center" colspan="2">Зарегистрировать новую учетную запись</td>
+                                <td align="center" colspan="2">Sign Up for Your New Account</td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Имя пользователя:</asp:Label>
+                                <td align="right" class="auto-style1">
+                                    <asp:Label ID="NameLabel" runat="server" AssociatedControlID="UserName">Name:</asp:Label>
                                 </td>
-                                <td>
-                                    <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Поле &quot;Имя пользователя&quot; является обязательным." ToolTip="Поле &quot;Имя пользователя&quot; является обязательным." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Пароль:</asp:Label>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Поле &quot;Пароль&quot; является обязательным." ToolTip="Поле &quot;Пароль&quot; является обязательным." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                <td class="auto-style2">
+                                    <asp:TextBox ID="NameTextBox" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Подтвердите пароль:</asp:Label>
+                                <td align="right" class="auto-style4">
+                                    <asp:Label ID="SurnameLabel" runat="server" AssociatedControlID="UserName">Surname:</asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Поле &quot;Подтвердите пароль&quot; является обязательным." ToolTip="Поле &quot;Подтвердите пароль&quot; является обязательным." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="SurnameTextBox" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UserNameRequired0" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">Электронная почта:</asp:Label>
+                                <td align="right" class="auto-style4">
+                                    <asp:Label ID="PatronymicLabel" runat="server" AssociatedControlID="UserName">Patronymic:</asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="Email" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" ErrorMessage="Поле &quot;Электронная почта&quot; является обязательным." ToolTip="Поле &quot;Электронная почта&quot; является обязательным." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="PatronymicTextBox" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UserNameRequired1" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="QuestionLabel" runat="server" AssociatedControlID="Question">Защитный вопрос:</asp:Label>
+                                <td align="right" class="auto-style4">
+                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
                                 </td>
-                                <td>
-                                    <asp:TextBox ID="Question" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="QuestionRequired" runat="server" ControlToValidate="Question" ErrorMessage="Защитный вопрос является обязательным." ToolTip="Защитный вопрос является обязательным." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                <td class="auto-style3">
+                                    <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right">
-                                    <asp:Label ID="AnswerLabel" runat="server" AssociatedControlID="Answer">Защитный ответ:</asp:Label>
+                                <td align="right" class="auto-style4">
+                                    <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password:</asp:Label>
                                 </td>
-                                <td>
-                                    <asp:TextBox ID="Answer" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="AnswerRequired" runat="server" ControlToValidate="Answer" ErrorMessage="Защитный ответ является обязательным." ToolTip="Защитный ответ является обязательным." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                <td class="auto-style3">
+                                    <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="CreateUserWizard1">*</asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" class="auto-style4">
+                                    <asp:Label ID="TeacherLabel" runat="server" AssociatedControlID="ConfirmPassword">Teacher?</asp:Label>
+                                </td>
+                                <td class="auto-style3">
+                                    <asp:CheckBox ID="TeacherCheckBox" runat="server" />
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center" colspan="2">
-                                    <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="Значения &quot;Пароль&quot; и &quot;Подтвердите пароль&quot; должны совпадать." ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
+                                    <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match." ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
                                 </td>
                             </tr>
                             <tr>
-                                <td align="center" class="auto-style1" colspan="2" style="color:Red;">
+                                <td align="center" colspan="2" style="color:Red;">
                                     <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
                                 </td>
                             </tr>

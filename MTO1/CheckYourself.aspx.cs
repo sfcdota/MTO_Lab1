@@ -9,9 +9,5 @@ namespace MTO1
 {
     public partial class CheckYourself : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
