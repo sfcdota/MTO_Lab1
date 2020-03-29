@@ -22,11 +22,11 @@
         }
         .auto-style3 {
             position:absolute;
-            left: 8px;
-            top: 14px;
-            width: 154px;
+            left: 30px;
+            top: 48px;
+            width: 264px;
             height: 155px;
-            right: 1246px;
+            right: 1114px;
         }
         .auto-style4 {
             margin-left:200px;
@@ -34,14 +34,14 @@
         .auto-style5 {
             width: 1150px;
             height: 748px;
-            margin-left: 160px;
+            margin-left: 93px;
         }
         .auto-style6 {
             position: relative;
             margin-top: 78px;
-            left: 141px;
-            top: -50px;
-            width: 1228px;
+            left: 90px;
+            top: -48px;
+            width: 1201px;
         }
         .auto-style7 {
             position: relative;
@@ -51,7 +51,7 @@
             padding:10px;
         }
         .auto-style8 {
-            margin-left: 616px;
+            margin-left: 497px;
             margin-top: 0px;
         }
         .auto-style9 {
@@ -72,39 +72,40 @@
             position: absolute;
             padding-left: 180px;
         }
-        .auto-style13 {
-            margin-left: 200px;
-            margin-right: 200px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
         .auto-style14 {
             margin-left: 193px;
         }
         </style>
 </head>
-<body>
+<body style="margin-left: 273px">
     <form id="form2" runat="server">
         <div class="auto-style3">
-        <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="60px">
+        <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.3em" ForeColor="#7C6F57" StaticSubMenuIndent="10px">
+            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+            <DynamicMenuStyle BackColor="#F7F6F3" />
+            <DynamicSelectedStyle BackColor="#5D7B9D" />
             <Items>
                 <asp:MenuItem Selectable="False" Text="Выбрать модуль" Value="Выбрать модуль">
-                    <asp:MenuItem Text="Проверь себя" Value="Проверь себя"></asp:MenuItem>
-                    <asp:MenuItem Text="Генерация заданий" Value="Генерация заданий"></asp:MenuItem>
+                    <asp:MenuItem Text="Проверь себя" Value="Проверь себя" NavigateUrl="~/CheckYourself.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Генерация заданий" Value="Генерация заданий" NavigateUrl="~/TaskGeneration.aspx"></asp:MenuItem>
                 </asp:MenuItem>
                 <asp:MenuItem Text="Выйти" Value="Выйти"></asp:MenuItem>
             </Items>
+            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+            <StaticSelectedStyle BackColor="#5D7B9D" />
         </asp:Menu>
         </div>
             <div class="auto-style6">
-                <asp:Label ID="CheckYourselfLabel" runat="server" CssClass="auto-style8" Height="25px" Text="Проверь себя" OnInit="CheckYourselfLabel_Init"></asp:Label>
+                <asp:Label ID="CheckYourselfLabel" runat="server" CssClass="auto-style8" Height="25px" Text="Проверь себя" OnInit="CheckYourselfLabel_Init" Font-Size="Larger"></asp:Label>
             </div>
         <div class="auto-style5">
             <div class="auto-style2">
-            <asp:Label ID="QuestionLabel1" runat="server" Text="Вопрос 1" Width="803px" CssClass="auto-style13"></asp:Label>
+            <asp:Label ID="QuestionLabel1" runat="server" Text="Вопрос 1" Width="803px" CssClass="auto-style1"></asp:Label>
                 <br />
             <asp:Label ID="Question1EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите ответ в текстовое поле:" Width="228px"></asp:Label>
-                <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px"></asp:TextBox>
+                <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px" AutoCompleteType="Disabled" TextMode="MultiLine"></asp:TextBox>
                 <br />
                 <asp:Button ID="GetAnswerButton1" runat="server" Height="25px" Text="Ответить" CssClass="auto-style9" OnClick="GetAnswerButton1_Click" />
                 <asp:Label ID="AnswerLabel1" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>
@@ -114,7 +115,7 @@
             <asp:Label ID="QuestionLabel2" runat="server" Text="Вопрос 2" Width="803px" CssClass="auto-style1"></asp:Label>
                 <br />
             <asp:Label ID="Question2EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите число в текстовое поле:" Width="228px"></asp:Label>
-                <asp:TextBox ID="AnswerTextBox2" runat="server" Height="25px" Width="364px"></asp:TextBox>
+                <asp:TextBox ID="AnswerTextBox2" runat="server" Height="25px" Width="364px" AutoCompleteType="Disabled" TextMode="Number"></asp:TextBox>
                 <br />
                 <asp:Button ID="GetAnswerButton2" runat="server" Height="25px" Text="Ответить" CssClass="auto-style9" OnClick="GetAnswerButton2_Click" />
                 <asp:Label ID="AnswerLabel2" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>

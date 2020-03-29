@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CheckYourself.aspx" />
+    <Content Include="CheckYourselfEdit.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="Registration.aspx" />
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="CheckYourself.aspx.designer.cs">
       <DependentUpon>CheckYourself.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckYourselfEdit.aspx.cs">
+      <DependentUpon>CheckYourselfEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckYourselfEdit.aspx.designer.cs">
+      <DependentUpon>CheckYourselfEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

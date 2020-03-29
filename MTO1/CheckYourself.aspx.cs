@@ -148,6 +148,26 @@ namespace MTO1
 
         protected void CheckYourselfLabel_Init(object sender, EventArgs e)
         {
+            HttpCookie cookie = new HttpCookie("LoginInfo");
+            if (cookie == null)
+                Response.Redirect("~/Default.aspx");
+            else
+            {
+                if (cookie["IsStudent"] == "0")
+                {
+                    MenuItem item = new MenuItem();
+                    item.Value = "Редактирование";
+                    item.NavigateUrl = "~/CheckYourselfEdit.aspx";
+                    MainMenu0.Items[0].ChildItems[0].ChildItems.Add(item);
+                }
+                LoadTask();
+            }
+
+
+        }
+
+        protected void LoadTask()
+        {
             questionid[0] = model.Task.Where(c => c.Type == 1).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
             questionid[1] = model.Task.Where(c => c.Type == 2).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
             questionid[2] = model.Task.Where(c => c.Type == 3).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
