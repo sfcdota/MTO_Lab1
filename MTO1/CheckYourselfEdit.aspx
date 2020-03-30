@@ -197,7 +197,7 @@
         <div class="auto-style5">
             <div class="auto-style2">
                 <asp:Label ID="Label6" runat="server" CssClass="auto-style28" Height="25px" Text="Выберите вопрос:"></asp:Label>
-                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px">
+                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                     <asp:ListItem Value="Новый"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
@@ -214,7 +214,7 @@
             <br />
             <div class="auto-style2">
                 <asp:Label ID="Label7" runat="server" CssClass="auto-style28" Height="25px" Text="Выберите вопрос:"></asp:Label>
-                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px">
+                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                     <asp:ListItem Value="Новый"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
@@ -223,7 +223,7 @@
                 <asp:TextBox ID="Question2DescriptionTextBox" runat="server" CssClass="auto-style15" Width="697px" AutoCompleteType="Disabled" TextMode="MultiLine"></asp:TextBox>
                 <br />
             <asp:Label ID="Question2EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите число в текстовое поле:" Width="228px"></asp:Label>
-                <asp:TextBox ID="Question2AnswerTextBox" runat="server" Height="25px" Width="364px" AutoCompleteType="Disabled" TextMode="MultiLine" CssClass="auto-style17"></asp:TextBox>
+                <asp:TextBox ID="Question2AnswerTextBox" runat="server" Height="25px" Width="364px" AutoCompleteType="Disabled" TextMode="Number" CssClass="auto-style17"></asp:TextBox>
                 <br />
                 <asp:Button ID="EditGetAnswerButton2" runat="server" Height="25px" Text="Изменить/Добавить" CssClass="auto-style9" OnClick="GetAnswerButton2_Click" />
                 <asp:Label ID="EditResponseLabel2" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>
@@ -231,7 +231,7 @@
             <br />
             <div class="auto-style2">
                 <asp:Label ID="Label8" runat="server" CssClass="auto-style28" Height="25px" Text="Выберите вопрос:"></asp:Label>
-                <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px">
+                <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
                     <asp:ListItem Value="Новый"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
@@ -240,10 +240,10 @@
                 <asp:TextBox ID="Question3DescriptionTextBox" runat="server" CssClass="auto-style15" Width="697px" AutoCompleteType="Disabled" TextMode="MultiLine"></asp:TextBox>
                 <br />
                 <asp:RadioButtonList ID="Question3RadioButtonList" runat="server" CssClass="auto-style14" Width="752px" CellPadding="5" RepeatColumns="2" RepeatDirection="Horizontal">
-                    <asp:ListItem></asp:ListItem>
-                    <asp:ListItem></asp:ListItem>
-                    <asp:ListItem></asp:ListItem>
-                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem Selected="True" Value=" "> </asp:ListItem>
+                    <asp:ListItem Value="  "> </asp:ListItem>
+                    <asp:ListItem Value="   "> </asp:ListItem>
+                    <asp:ListItem Value="    "> </asp:ListItem>
                 </asp:RadioButtonList>
                 <asp:TextBox ID="Question3AnswerTextBox3" runat="server" CssClass="auto-style21" AutoCompleteType="Disabled" TextMode="MultiLine" Height="20px"></asp:TextBox>
                 <asp:TextBox ID="Question3AnswerTextBox2" runat="server" CssClass="auto-style29" AutoCompleteType="Disabled" TextMode="MultiLine" Height="20px"></asp:TextBox>
@@ -255,7 +255,7 @@
             <br />
             <div class="auto-style2">
                 <asp:Label ID="Label9" runat="server" CssClass="auto-style28" Height="25px" Text="Выберите вопрос:"></asp:Label>
-                <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px">
+                <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged">
                     <asp:ListItem Value="Новый"></asp:ListItem>
                 </asp:DropDownList>
                 <br />
@@ -280,7 +280,7 @@
             <br />
             <div class="auto-style2">
                 <asp:Label ID="Label10" runat="server" CssClass="auto-style28" Height="25px" Text="Выберите вопрос:"></asp:Label>
-                <asp:DropDownList ID="DropDownList5" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px">
+                <asp:DropDownList ID="DropDownList5" runat="server" AutoPostBack="True" CssClass="auto-style27" Height="50px" Width="171px" OnSelectedIndexChanged="DropDownList5_SelectedIndexChanged">
                     <asp:ListItem Value="Новый"></asp:ListItem>
                 </asp:DropDownList>
                 <br />

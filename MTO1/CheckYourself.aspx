@@ -66,7 +66,7 @@
 
         }
         .auto-style11 {
-            
+            resize:none;
         }
         .auto-style12 {
             position: absolute;
@@ -105,7 +105,7 @@
             <asp:Label ID="QuestionLabel1" runat="server" Text="Вопрос 1" Width="803px" CssClass="auto-style1"></asp:Label>
                 <br />
             <asp:Label ID="Question1EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите ответ в текстовое поле:" Width="228px"></asp:Label>
-                <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px" AutoCompleteType="Disabled" TextMode="MultiLine"></asp:TextBox>
+                <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px" AutoCompleteType="Disabled" TextMode="MultiLine" CssClass="auto-style11"></asp:TextBox>
                 <br />
                 <asp:Button ID="GetAnswerButton1" runat="server" Height="25px" Text="Ответить" CssClass="auto-style9" OnClick="GetAnswerButton1_Click" />
                 <asp:Label ID="AnswerLabel1" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>

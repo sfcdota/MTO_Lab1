@@ -162,17 +162,16 @@ namespace MTO1
                 }
                 LoadTask();
             }
-
-
         }
 
         protected void LoadTask()
         {
-            questionid[0] = model.Task.Where(c => c.Type == 1).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
-            questionid[1] = model.Task.Where(c => c.Type == 2).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
-            questionid[2] = model.Task.Where(c => c.Type == 3).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
-            questionid[3] = model.Task.Where(c => c.Type == 4).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
-            questionid[4] = model.Task.Where(c => c.Type == 5).OrderBy(o => SqlFunctions.Rand()).FirstOrDefault().ID;
+            Random rand = new Random();
+            questionid[0] = model.Task.Where(c => c.Type == 1).ToList()[rand.Next(model.Task.Where(c => c.Type == 1).ToList().Count)].ID;
+            questionid[1] = model.Task.Where(c => c.Type == 2).ToList()[rand.Next(model.Task.Where(c => c.Type == 2).ToList().Count)].ID;
+            questionid[2] = model.Task.Where(c => c.Type == 3).ToList()[rand.Next(model.Task.Where(c => c.Type == 3).ToList().Count)].ID;
+            questionid[3] = model.Task.Where(c => c.Type == 4).ToList()[rand.Next(model.Task.Where(c => c.Type == 4).ToList().Count)].ID;
+            questionid[4] = model.Task.Where(c => c.Type == 5).ToList()[rand.Next(model.Task.Where(c => c.Type == 5).ToList().Count)].ID;
 
             int index = questionid[0];
             QuestionLabel1.Text = "Вопрос 1: " + model.Task.Where(c => c.ID == index).First().Question_1;
@@ -217,6 +216,14 @@ namespace MTO1
             Question5Label2.Width = Convert.ToInt32(7 * 1.33 * maxlength);
             Question5Label3.Width = Convert.ToInt32(7 * 1.33 * maxlength);
             Question5Label4.Width = Convert.ToInt32(7 * 1.33 * maxlength);
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            HttpCookie cookie = new HttpCookie("LoginInfo");
+            if (cookie == null)
+                Response.Redirect("~/Default.aspx");
+            Page.MaintainScrollPositionOnPostBack = true;
         }
     }
 }
