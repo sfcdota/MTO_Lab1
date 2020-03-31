@@ -12,12 +12,17 @@ namespace MTO1
 		{
 		}
 
+		public virtual DbSet<Generation> Generation { get; set; }
 		public virtual DbSet<Student> Student { get; set; }
 		public virtual DbSet<Task> Task { get; set; }
 		public virtual DbSet<Teacher> Teacher { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
+			modelBuilder.Entity<Student>()
+				.HasMany(e => e.Generation)
+				.WithRequired(e => e.Student)
+				.WillCascadeOnDelete(false);
 		}
 	}
 }

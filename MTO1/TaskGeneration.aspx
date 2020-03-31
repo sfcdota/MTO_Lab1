@@ -80,23 +80,23 @@
         }
                 .auto-style14 {
             position:relative;
-            left: 18px;
+            left: 0px;
             top: -36px;
         }
         .auto-style15 {
             position: relative;
-            left: 57px;
+            left: 30px;
             top: -36px;
             margin-right: 0px;
         }
         .auto-style16 {
             position: relative;
-            left: -50px;
+            left: -30px;
             top: -2px;
         }
         .auto-style17 {
             position: relative;
-            left: -11px;
+            left: 0px;
             top: -2px;
         }
         </style>
@@ -104,7 +104,7 @@
 <body style="margin-left: 273px; height: 420px;">
     <form id="form2" runat="server">
         <div class="auto-style3">
-        <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.3em" ForeColor="#7C6F57" StaticSubMenuIndent="10px">
+        <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.3em" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="MainMenu0_MenuItemClick">
             <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
             <DynamicMenuStyle BackColor="#F7F6F3" />
@@ -122,25 +122,25 @@
         </asp:Menu>
         </div>
             <div class="auto-style6">
-                <asp:Label ID="CheckYourselfLabel" runat="server" CssClass="auto-style8" Height="25px" Text="Генерация заданий" Font-Size="Larger" OnInit="CheckYourselfLabel_Init"></asp:Label>
+                <asp:Label ID="TaskGenerationLabel" runat="server" CssClass="auto-style8" Height="25px" Text="Генерация заданий" Font-Size="Larger"></asp:Label>
             </div>
         <div class="auto-style5">
             <br />
             <div class="auto-style2">
-            <asp:Label ID="QuestionLabel2" runat="server" Text="Вычислите определитель матрицы." Width="803px" CssClass="auto-style1"></asp:Label>
+            <asp:Label ID="QuestionLabel" runat="server" Text="Вычислите определитель матрицы." Width="803px" CssClass="auto-style1"></asp:Label>
                 <br />
-                <asp:Label ID="Label1" runat="server" CssClass="auto-style12" Font-Size="60pt" Height="100px" Text="["></asp:Label>
-                <asp:Label ID="Label3" runat="server" Height="25px" Text="Label" CssClass="auto-style14"></asp:Label>
-                <asp:Label ID="Label4" runat="server" Height="25px" Text="Label" CssClass="auto-style15"></asp:Label>
-                <asp:Label ID="Label5" runat="server" Height="25px" Text="Label" CssClass="auto-style16"></asp:Label>
-                <asp:Label ID="Label6" runat="server" Height="25px" Text="Label" CssClass="auto-style17"></asp:Label>
-                <asp:Label ID="Label2" runat="server" CssClass="auto-style13" Font-Size="60pt" Height="100px" Text="]"></asp:Label>
+                <asp:Label ID="Label1" runat="server" CssClass="auto-style12" Font-Size="60pt" Height="100px" Text="|"></asp:Label>
+                <asp:Label ID="A11Label" runat="server" Height="25px" Text="Label" CssClass="auto-style14"></asp:Label>
+                <asp:Label ID="A12Label" runat="server" Height="25px" Text="Label" CssClass="auto-style15"></asp:Label>
+                <asp:Label ID="A21Label" runat="server" Height="25px" Text="Label" CssClass="auto-style16"></asp:Label>
+                <asp:Label ID="A22Label" runat="server" Height="25px" Text="Label" CssClass="auto-style17"></asp:Label>
+                <asp:Label ID="Label2" runat="server" CssClass="auto-style13" Font-Size="60pt" Height="100px" Text="|"></asp:Label>
                 <br />
-            <asp:Label ID="Question1EnterLabel0" runat="server" CssClass="auto-style4" Height="30px" Text="Введите ответ(число) в текстовое поле:" Width="272px"></asp:Label>
+            <asp:Label ID="Question1EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите ответ(число) в текстовое поле:" Width="272px"></asp:Label>
                 <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px" AutoCompleteType="Disabled" TextMode="Number" CssClass="auto-style11"></asp:TextBox>
                 <br />
-                <asp:Button ID="GetAnswerButton1" runat="server" Height="25px" Text="Ответить" CssClass="auto-style9" OnClick="GetAnswerButton1_Click" />
-                <asp:Label ID="AnswerLabel1" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>
+                <asp:Button ID="AnswerButton" runat="server" Height="25px" Text="Ответить" CssClass="auto-style9" OnClick="GetAnswerButton1_Click" />
+                <asp:Label ID="AnswerLabel" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>
             </div>
         </div>
     </form>

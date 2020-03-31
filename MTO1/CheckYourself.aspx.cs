@@ -148,30 +148,10 @@ namespace MTO1
 
         protected void CheckYourselfLabel_Init(object sender, EventArgs e)
         {
-            HttpCookie cookie = new HttpCookie("LoginInfo");
-            if (cookie == null)
-                Response.Redirect("~/Default.aspx");
-            else
-            {
-                if (cookie["IsStudent"] == "0")
-                {
-                    MenuItem item = new MenuItem();
-                    item.Value = "Редактирование";
-                    item.NavigateUrl = "~/CheckYourselfEdit.aspx";
-                    MainMenu0.Items[0].ChildItems[0].ChildItems.Add(item);
-                }
-                LoadTask();
-            }
         }
 
         protected void LoadTask()
         {
-            Random rand = new Random();
-            questionid[0] = model.Task.Where(c => c.Type == 1).ToList()[rand.Next(model.Task.Where(c => c.Type == 1).ToList().Count)].ID;
-            questionid[1] = model.Task.Where(c => c.Type == 2).ToList()[rand.Next(model.Task.Where(c => c.Type == 2).ToList().Count)].ID;
-            questionid[2] = model.Task.Where(c => c.Type == 3).ToList()[rand.Next(model.Task.Where(c => c.Type == 3).ToList().Count)].ID;
-            questionid[3] = model.Task.Where(c => c.Type == 4).ToList()[rand.Next(model.Task.Where(c => c.Type == 4).ToList().Count)].ID;
-            questionid[4] = model.Task.Where(c => c.Type == 5).ToList()[rand.Next(model.Task.Where(c => c.Type == 5).ToList().Count)].ID;
 
             int index = questionid[0];
             QuestionLabel1.Text = "Вопрос 1: " + model.Task.Where(c => c.ID == index).First().Question_1;
@@ -218,12 +198,62 @@ namespace MTO1
             Question5Label4.Width = Convert.ToInt32(7 * 1.33 * maxlength);
         }
 
+        protected void Randomize()
+        {
+            Random rand = new Random();
+            questionid[0] = model.Task.Where(c => c.Type == 1).ToList()[rand.Next(model.Task.Where(c => c.Type == 1).ToList().Count)].ID;
+            questionid[1] = model.Task.Where(c => c.Type == 2).ToList()[rand.Next(model.Task.Where(c => c.Type == 2).ToList().Count)].ID;
+            questionid[2] = model.Task.Where(c => c.Type == 3).ToList()[rand.Next(model.Task.Where(c => c.Type == 3).ToList().Count)].ID;
+            questionid[3] = model.Task.Where(c => c.Type == 4).ToList()[rand.Next(model.Task.Where(c => c.Type == 4).ToList().Count)].ID;
+            questionid[4] = model.Task.Where(c => c.Type == 5).ToList()[rand.Next(model.Task.Where(c => c.Type == 5).ToList().Count)].ID;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie cookie = new HttpCookie("LoginInfo");
+            Page.MaintainScrollPositionOnPostBack = true;
+            HttpCookie cookie = Request.Cookies["LoginInfo"];
             if (cookie == null)
                 Response.Redirect("~/Default.aspx");
-            Page.MaintainScrollPositionOnPostBack = true;
+            else
+            {
+                if (cookie["IsStudent"] == "0" && ViewState["FirstTime"] == null)
+                {
+                    MenuItem item = new MenuItem();
+                    item.Value = "Редактирование";
+                    item.NavigateUrl = "~/CheckYourselfEdit.aspx";
+                    MainMenu0.Items[0].ChildItems[0].ChildItems.Add(item);
+                }
+                if (ViewState["FirstTime"] == null)
+                {
+                    Randomize();
+                    LoadTask();
+                    ViewState["ID0"] = questionid[0].ToString();
+                    ViewState["ID1"] = questionid[1].ToString();
+                    ViewState["ID2"] = questionid[2].ToString();
+                    ViewState["ID3"] = questionid[3].ToString();
+                    ViewState["ID4"] = questionid[4].ToString();
+                    ViewState["FirstTime"] = 1;
+                }
+                else
+                {
+                    questionid[0] = Convert.ToInt32(ViewState["ID0"]);
+                    questionid[1] = Convert.ToInt32(ViewState["ID1"]);
+                    questionid[2] = Convert.ToInt32(ViewState["ID2"]);
+                    questionid[3] = Convert.ToInt32(ViewState["ID3"]);
+                    questionid[4] = Convert.ToInt32(ViewState["ID4"]);
+                }
+            }
+        }
+
+        protected void MainMenu0_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            if (e.Item == MainMenu0.Items[1])
+            {
+                HttpCookie cookie = Request.Cookies["LoginInfo"];
+                cookie.Expires = DateTime.Now.AddDays(-30);
+                Response.Cookies.Add(cookie);
+                Response.Redirect("~/Default.aspx");
+            }
         }
     }
 }

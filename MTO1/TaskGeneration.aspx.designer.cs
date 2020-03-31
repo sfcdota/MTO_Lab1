@@ -33,22 +33,22 @@ namespace MTO1
 		protected global::System.Web.UI.WebControls.Menu MainMenu0;
 
 		/// <summary>
-		/// CheckYourselfLabel control.
+		/// TaskGenerationLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label CheckYourselfLabel;
+		protected global::System.Web.UI.WebControls.Label TaskGenerationLabel;
 
 		/// <summary>
-		/// QuestionLabel2 control.
+		/// QuestionLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label QuestionLabel2;
+		protected global::System.Web.UI.WebControls.Label QuestionLabel;
 
 		/// <summary>
 		/// Label1 control.
@@ -60,40 +60,40 @@ namespace MTO1
 		protected global::System.Web.UI.WebControls.Label Label1;
 
 		/// <summary>
-		/// Label3 control.
+		/// A11Label control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label3;
+		protected global::System.Web.UI.WebControls.Label A11Label;
 
 		/// <summary>
-		/// Label4 control.
+		/// A12Label control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label4;
+		protected global::System.Web.UI.WebControls.Label A12Label;
 
 		/// <summary>
-		/// Label5 control.
+		/// A21Label control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label5;
+		protected global::System.Web.UI.WebControls.Label A21Label;
 
 		/// <summary>
-		/// Label6 control.
+		/// A22Label control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label6;
+		protected global::System.Web.UI.WebControls.Label A22Label;
 
 		/// <summary>
 		/// Label2 control.
@@ -105,13 +105,13 @@ namespace MTO1
 		protected global::System.Web.UI.WebControls.Label Label2;
 
 		/// <summary>
-		/// Question1EnterLabel0 control.
+		/// Question1EnterLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Question1EnterLabel0;
+		protected global::System.Web.UI.WebControls.Label Question1EnterLabel;
 
 		/// <summary>
 		/// AnswerTextBox1 control.
@@ -123,21 +123,21 @@ namespace MTO1
 		protected global::System.Web.UI.WebControls.TextBox AnswerTextBox1;
 
 		/// <summary>
-		/// GetAnswerButton1 control.
+		/// AnswerButton control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button GetAnswerButton1;
+		protected global::System.Web.UI.WebControls.Button AnswerButton;
 
 		/// <summary>
-		/// AnswerLabel1 control.
+		/// AnswerLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label AnswerLabel1;
+		protected global::System.Web.UI.WebControls.Label AnswerLabel;
 	}
 }

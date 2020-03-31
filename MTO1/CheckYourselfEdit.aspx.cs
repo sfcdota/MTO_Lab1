@@ -21,6 +21,15 @@ namespace MTO1
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Page.MaintainScrollPositionOnPostBack = true;
+			HttpCookie cookie = Request.Cookies["LoginInfo"];
+			if (cookie["IsStudent"] == "0" && ViewState["FirstTime"] == null)
+			{
+				MenuItem item = new MenuItem();
+				item.Value = "Редактирование";
+				item.NavigateUrl = "~/CheckYourselfEdit.aspx";
+				MainMenu0.Items[0].ChildItems[0].ChildItems.Add(item);
+				ViewState["FirstTime"] = 1;
+			}
 		}
 		protected int Generate_ID()
 		{
@@ -462,6 +471,17 @@ namespace MTO1
 				Question5DropDownList2.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).Answer_2.ToString();
 				Question5DropDownList3.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).Answer_3.ToString();
 				Question5DropDownList4.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).Answer_4.ToString();
+			}
+		}
+
+		protected void MainMenu0_MenuItemClick(object sender, MenuEventArgs e)
+		{
+			if (e.Item == MainMenu0.Items[1])
+			{
+				HttpCookie cookie = Request.Cookies["LoginInfo"];
+				cookie.Expires = DateTime.Now.AddDays(-30);
+				Response.Cookies.Add(cookie);
+				Response.Redirect("~/Default.aspx");
 			}
 		}
 	}

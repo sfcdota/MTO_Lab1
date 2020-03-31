@@ -81,6 +81,7 @@
     <Content Include="Main.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="TaskGeneration.aspx" />
+    <Content Include="TaskGenerationResults.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +106,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Generation.cs" />
     <Compile Include="Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +131,13 @@
     </Compile>
     <Compile Include="TaskGeneration.aspx.designer.cs">
       <DependentUpon>TaskGeneration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskGenerationResults.aspx.cs">
+      <DependentUpon>TaskGenerationResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TaskGenerationResults.aspx.designer.cs">
+      <DependentUpon>TaskGenerationResults.aspx</DependentUpon>
     </Compile>
     <Compile Include="Teacher.cs" />
   </ItemGroup>

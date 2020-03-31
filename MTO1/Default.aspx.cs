@@ -19,17 +19,17 @@ namespace MTO1
 
         protected void LoginForm_Authenticate(object sender, AuthenticateEventArgs e)
         {
-            if (model.Student.Where(c => c.ID == Convert.ToInt32(LoginForm.UserName))
+            int id = Convert.ToInt32(LoginForm.UserName);
+            if (model.Student.Where(c => c.ID == id)
                 .Where(c => c.Password == LoginForm.Password).FirstOrDefault() != null
                 || 
-                model.Teacher.Where(c => c.ID == Convert.ToInt32(LoginForm.UserName))
+                model.Teacher.Where(c => c.ID == id)
                 .Where(c => c.Password == LoginForm.Password).FirstOrDefault() != null)
             {
                 HttpCookie cookie = new HttpCookie("LoginInfo");
                 cookie["Login"] = LoginForm.UserName;
                 cookie["Password"] = LoginForm.Password;
-                cookie["IsStudent"] = model.Student.Where(c => c.ID == Convert.ToInt32(LoginForm.UserName))
-                    .FirstOrDefault() != null ? "1" : "0";
+                cookie["IsStudent"] = model.Student.Where(c => c.ID == id).FirstOrDefault() != null ? "1" : "0";
                 cookie.Expires = DateTime.Now.AddDays(30);
                 Response.Cookies.Add(cookie);
                 Response.Redirect("~/Main.aspx");

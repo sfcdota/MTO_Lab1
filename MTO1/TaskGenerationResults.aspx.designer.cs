@@ -11,34 +11,52 @@ namespace MTO1
 {
 
 
-	public partial class Default
+	public partial class TaskGenerationResults
 	{
 
 		/// <summary>
-		/// form1 control.
+		/// form2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+		protected global::System.Web.UI.HtmlControls.HtmlForm form2;
 
 		/// <summary>
-		/// HyperLink1 control.
+		/// MainMenu0 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+		protected global::System.Web.UI.WebControls.Menu MainMenu0;
 
 		/// <summary>
-		/// LoginForm control.
+		/// TaskGenerationLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Login LoginForm;
+		protected global::System.Web.UI.WebControls.Label TaskGenerationLabel;
+
+		/// <summary>
+		/// StudentResultsLabel control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label StudentResultsLabel;
+
+		/// <summary>
+		/// ResultGridView control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.GridView ResultGridView;
 	}
 }

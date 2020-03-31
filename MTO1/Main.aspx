@@ -6,11 +6,25 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+
+        .auto-style7 {
+            position: relative;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+            padding:10px;
+            resize : none;
+        }
+        </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:LinkButton ID="LogoutButton" runat="server" style="margin-left: 1408px" Width="63px">Log out</asp:LinkButton>
-        <asp:Menu ID="MainMenu" runat="server" Font-Size="Large">
+        <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.3em" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="MainMenu0_MenuItemClick">
+            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+            <DynamicMenuStyle BackColor="#F7F6F3" />
+            <DynamicSelectedStyle BackColor="#5D7B9D" />
             <Items>
                 <asp:MenuItem Selectable="False" Text="Выбрать модуль" Value="Выбрать модуль">
                     <asp:MenuItem Text="Проверь себя" Value="Проверь себя" NavigateUrl="~/CheckYourself.aspx"></asp:MenuItem>
@@ -18,6 +32,9 @@
                 </asp:MenuItem>
                 <asp:MenuItem Text="Выйти" Value="Выйти"></asp:MenuItem>
             </Items>
+            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+            <StaticSelectedStyle BackColor="#5D7B9D" />
         </asp:Menu>
     </form>
 </body>
