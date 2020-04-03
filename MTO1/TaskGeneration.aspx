@@ -75,30 +75,6 @@
         .auto-style12 {
             margin-left: 200px;
         }
-        .auto-style13 {
-            margin-left: 0px;
-        }
-                .auto-style14 {
-            position:relative;
-            left: 0px;
-            top: -36px;
-        }
-        .auto-style15 {
-            position: relative;
-            left: 30px;
-            top: -36px;
-            margin-right: 0px;
-        }
-        .auto-style16 {
-            position: relative;
-            left: -30px;
-            top: -2px;
-        }
-        .auto-style17 {
-            position: relative;
-            left: 0px;
-            top: -2px;
-        }
         </style>
 </head>
 <body style="margin-left: 273px; height: 420px;">
@@ -127,20 +103,19 @@
         <div class="auto-style5">
             <br />
             <div class="auto-style2">
-            <asp:Label ID="QuestionLabel" runat="server" Text="Вычислите определитель матрицы." Width="803px" CssClass="auto-style1"></asp:Label>
+            <asp:Label ID="QuestionLabel" runat="server" Text="Решите квадратное уравнение. Если уравнение имеет несколько корней,  запишите их через пробел, без запятых. Значения округлить до десятых. Если уравнение не имеет корней или решений бесконечное множество - введите &quot;0&quot;." Width="803px" CssClass="auto-style1" Font-Size="19pt"></asp:Label>
                 <br />
-                <asp:Label ID="Label1" runat="server" CssClass="auto-style12" Font-Size="60pt" Height="100px" Text="|"></asp:Label>
-                <asp:Label ID="A11Label" runat="server" Height="25px" Text="Label" CssClass="auto-style14"></asp:Label>
-                <asp:Label ID="A12Label" runat="server" Height="25px" Text="Label" CssClass="auto-style15"></asp:Label>
-                <asp:Label ID="A21Label" runat="server" Height="25px" Text="Label" CssClass="auto-style16"></asp:Label>
-                <asp:Label ID="A22Label" runat="server" Height="25px" Text="Label" CssClass="auto-style17"></asp:Label>
-                <asp:Label ID="Label2" runat="server" CssClass="auto-style13" Font-Size="60pt" Height="100px" Text="|"></asp:Label>
                 <br />
-            <asp:Label ID="Question1EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите ответ(число) в текстовое поле:" Width="272px"></asp:Label>
+                <asp:Label ID="EquationLabel" runat="server" CssClass="auto-style12" Font-Size="25pt" Height="50px"></asp:Label>
+                <br />
+                <br />
+            <asp:Label ID="Question1EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите ответ в текстовое поле:" Width="272px"></asp:Label>
                 <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px" AutoCompleteType="Disabled" TextMode="Number" CssClass="auto-style11"></asp:TextBox>
                 <br />
                 <asp:Button ID="AnswerButton" runat="server" Height="25px" Text="Ответить" CssClass="auto-style9" OnClick="GetAnswerButton1_Click" />
                 <asp:Label ID="AnswerLabel" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>
+                <br />
+                <asp:Button ID="NextButton" runat="server" Height="25px" Text="Перейти к следующему заданию" CssClass="auto-style9" OnClick="NextButton_Click" Visible="False" />
             </div>
         </div>
     </form>

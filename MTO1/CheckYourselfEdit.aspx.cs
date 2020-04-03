@@ -11,12 +11,11 @@ namespace MTO1
 	{
 		static Model model = new Model();
 
-		List<Task> task1 = model.Task.Where(c => c.Type == 1).ToList();
-		List<Task> task2 = model.Task.Where(c => c.Type == 2).ToList();
-		List<Task> task3 = model.Task.Where(c => c.Type == 3).ToList();
-		List<Task> task4 = model.Task.Where(c => c.Type == 4).ToList();
-		List<Task> task5 = model.Task.Where(c => c.Type == 5).ToList();
-		List<Task> tasks = model.Task.ToList();
+		List<TextQuestion> task1 = model.TextQuestion.ToList();
+		List<NumberQuestion> task2 = model.NumberQuestion.ToList();
+		List<ChoiceQuestion> task3 = model.ChoiceQuestion.ToList();
+		List<MultipleChoiceQuestion> task4 = model.MultipleChoiceQuestion.ToList();
+		List<ComplianceQuestion> task5 = model.ComplianceQuestion.ToList();
 		int currentID;
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -31,45 +30,32 @@ namespace MTO1
 				ViewState["FirstTime"] = 1;
 			}
 		}
-		protected int Generate_ID()
-		{
-			int id = 0;
-			foreach(Task c in tasks)
-			{
-				foreach (Task c1 in tasks)
-					if (id == c1.ID)
-						id++;
-			}
-			return id;
-		}
 		protected void GetAnswerButton1_Click(object sender, EventArgs e)
 		{
 			if (DropDownList1.SelectedIndex == 0)
 			{
-				Task task = new Task
+				TextQuestion textquestion = new TextQuestion
 				{
-					ID = Generate_ID(),
-					Question_1 = Question1DescriptionTextBox.Text,
-					AnswerDescription1 = Question1AnswerTextBox.Text,
-					Type = 1
+					ID = 228,
+					Question = Question1DescriptionTextBox.Text,
+					Answer = Question1AnswerTextBox.Text,
 				};
-				task1.Add(task);
-				tasks.Add(task);
-				model.Task.Add(task);
-				DropDownList1.Items.Add(new ListItem("ID" + task.ID + ". " + task.Question_1, task.ID.ToString()));
-				DropDownList1.SelectedValue = task.ID.ToString();
+				task1.Add(textquestion);
+				model.TextQuestion.Add(textquestion);
+				DropDownList1.Items.Add(new ListItem("ID" + textquestion.ID + ". " + textquestion.Answer, textquestion.ID.ToString()));
+				DropDownList1.SelectedValue = textquestion.ID.ToString();
 			}
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList1.SelectedValue);
-				Task task = task1.FirstOrDefault(c => c.ID == currentID);
-				task.Question_1 = Question1DescriptionTextBox.Text;
-				task.AnswerDescription1 = Question1AnswerTextBox.Text;
+				TextQuestion textquestion = task1.FirstOrDefault(c => c.ID == currentID);
+				textquestion.Question = Question1DescriptionTextBox.Text;
+				textquestion.Answer = Question1AnswerTextBox.Text;
 
-				task = model.Task.Where(c => c.ID == currentID).FirstOrDefault();
-				task.Question_1 = Question1DescriptionTextBox.Text;
-				task.AnswerDescription1 = Question1AnswerTextBox.Text;
-				DropDownList1.SelectedItem.Text = "ID" + task.ID + ". " + task.Question_1;
+				textquestion = model.TextQuestion.Where(c => c.ID == currentID).FirstOrDefault();
+				textquestion.Question = Question1DescriptionTextBox.Text;
+				textquestion.Answer = Question1AnswerTextBox.Text;
+				DropDownList1.SelectedItem.Text = "ID" + textquestion.ID + ". " + textquestion.Question;
 			}
 			model.SaveChanges();
 		}
@@ -78,30 +64,28 @@ namespace MTO1
 		{
 			if (DropDownList2.SelectedIndex == 0)
 			{
-				Task task = new Task
+				NumberQuestion numberquestion = new NumberQuestion
 				{
-					ID = Generate_ID(),
-					Question_1 = Question2DescriptionTextBox.Text,
-					AnswerDescription1 = Question2AnswerTextBox.Text,
-					Type = 2
+					ID = 228,
+					Question = Question2DescriptionTextBox.Text,
+					Answer = Convert.ToInt32(Question2AnswerTextBox.Text),
 				};
-				task2.Add(task);
-				tasks.Add(task);
-				model.Task.Add(task);
-				DropDownList2.Items.Add(new ListItem("ID" + task.ID + ". " + task.Question_1, task.ID.ToString()));
-				DropDownList2.SelectedValue = task.ID.ToString();
+				task2.Add(numberquestion);
+				model.NumberQuestion.Add(numberquestion);
+				DropDownList2.Items.Add(new ListItem("ID" + numberquestion.ID + ". " + numberquestion.Question, numberquestion.ID.ToString()));
+				DropDownList2.SelectedValue = numberquestion.ID.ToString();
 			}
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList2.SelectedValue);
-				Task task = task2.FirstOrDefault(c => c.ID == currentID);
-				task.Question_1 = Question2DescriptionTextBox.Text;
-				task.AnswerDescription1 = Question2AnswerTextBox.Text;
+				NumberQuestion numberquestion = task2.FirstOrDefault(c => c.ID == currentID);
+				numberquestion.Question = Question2DescriptionTextBox.Text;
+				numberquestion.Answer = Convert.ToInt32(Question2AnswerTextBox.Text);
 
-				task = model.Task.Where(c => c.ID == currentID).FirstOrDefault();
-				task.Question_1 = Question2DescriptionTextBox.Text;
-				task.AnswerDescription1 = Question2AnswerTextBox.Text;
-				DropDownList2.SelectedItem.Text = "ID" + task.ID + ". " + task.Question_1;
+				numberquestion = model.NumberQuestion.Where(c => c.ID == currentID).FirstOrDefault();
+				numberquestion.Question = Question2DescriptionTextBox.Text;
+				numberquestion.Answer = Convert.ToInt32(Question2AnswerTextBox.Text);
+				DropDownList2.SelectedItem.Text = "ID" + numberquestion.ID + ". " + numberquestion.Question;
 			}
 			model.SaveChanges();
 		}
@@ -110,64 +94,64 @@ namespace MTO1
 		{
 			if (DropDownList3.SelectedIndex == 0)
 			{
-				Task task = new Task
+				int correctAnswer = 0;
+				for (int i = 0; i < Question3RadioButtonList.Items.Count; i++)
+					if (Question3RadioButtonList.Items[i].Selected)
+						correctAnswer = i;
+				ChoiceQuestion task = new ChoiceQuestion
 				{
-					ID = Generate_ID(),
-					Question_1 = Question3DescriptionTextBox.Text,
-					AnswerDescription1 = Question3AnswerTextBox1.Text,
-					AnswerDescription2 = Question3AnswerTextBox2.Text,
-					AnswerDescription3 = Question3AnswerTextBox3.Text,
-					AnswerDescription4 = Question3AnswerTextBox4.Text,
-					Answer_1 = Convert.ToInt32(Question3RadioButtonList.Items[0].Selected),
-					Answer_2 = Convert.ToInt32(Question3RadioButtonList.Items[1].Selected),
-					Answer_3 = Convert.ToInt32(Question3RadioButtonList.Items[2].Selected),
-					Answer_4 = Convert.ToInt32(Question3RadioButtonList.Items[3].Selected),
-					Type = 3
+					ID = 228,
+					Question = Question3DescriptionTextBox.Text,
+					Answer1 = Question3AnswerTextBox1.Text,
+					Answer2 = Question3AnswerTextBox2.Text,
+					Answer3 = Question3AnswerTextBox3.Text,
+					Answer4 = Question3AnswerTextBox4.Text,
+					CorrectAnswer = correctAnswer + 1
 				};
 				task3.Add(task);
-				tasks.Add(task);
-				model.Task.Add(task);
-				DropDownList3.Items.Add(new ListItem("ID" + task.ID + ". " + task.Question_1, task.ID.ToString()));
+				model.ChoiceQuestion.Add(task);
+				DropDownList3.Items.Add(new ListItem("ID" + task.ID + ". " + task.Question, task.ID.ToString()));
 				DropDownList3.SelectedValue = task.ID.ToString();
-				Question3RadioButtonList.Items[0].Selected = Convert.ToBoolean(task.Answer_1);
-				Question3RadioButtonList.Items[1].Selected = Convert.ToBoolean(task.Answer_2);
-				Question3RadioButtonList.Items[2].Selected = Convert.ToBoolean(task.Answer_3);
-				Question3RadioButtonList.Items[3].Selected = Convert.ToBoolean(task.Answer_4);
+				for (int i = 0; i < Question3RadioButtonList.Items.Count; i++)
+					if (i != correctAnswer)
+						Question3RadioButtonList.Items[i].Selected = false;
+					else
+						Question3RadioButtonList.Items[i].Selected = true;
 			}
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList3.SelectedValue);
-				Task task = task3.FirstOrDefault(c => c.ID == currentID);
+				ChoiceQuestion task = task3.FirstOrDefault(c => c.ID == currentID);
 				string temp;
 
 				temp = Question3RadioButtonList.SelectedItem.Value;
-				task.Question_1 = Question3DescriptionTextBox.Text;
-				task.AnswerDescription1 = Question3AnswerTextBox1.Text;
-				task.AnswerDescription2 = Question3AnswerTextBox2.Text;
-				task.AnswerDescription3 = Question3AnswerTextBox3.Text;
-				task.AnswerDescription4 = Question3AnswerTextBox4.Text;
-				task.Answer_1 = Convert.ToInt32(Question3RadioButtonList.Items[0].Selected);
-				task.Answer_2 = Convert.ToInt32(Question3RadioButtonList.Items[1].Selected);
-				task.Answer_3 = Convert.ToInt32(Question3RadioButtonList.Items[2].Selected);
-				task.Answer_4 = Convert.ToInt32(Question3RadioButtonList.Items[3].Selected);
+				task.Question = Question3DescriptionTextBox.Text;
+				task.Answer1 = Question3AnswerTextBox1.Text;
+				task.Answer2 = Question3AnswerTextBox2.Text;
+				task.Answer3 = Question3AnswerTextBox3.Text;
+				task.Answer4 = Question3AnswerTextBox4.Text;
+				int correctAnswer = 0;
+				for (int i = 0; i < Question3RadioButtonList.Items.Count; i++)
+					if (Question3RadioButtonList.Items[i].Selected)
+						correctAnswer = i;
 
-				task = model.Task.Where(c => c.ID == currentID).FirstOrDefault();
-				task.Question_1 = Question3DescriptionTextBox.Text;
-				task.AnswerDescription1 = Question3AnswerTextBox1.Text;
-				task.AnswerDescription2 = Question3AnswerTextBox2.Text;
-				task.AnswerDescription3 = Question3AnswerTextBox3.Text;
-				task.AnswerDescription4 = Question3AnswerTextBox4.Text;
-				task.Answer_1 = Convert.ToInt32(Question3RadioButtonList.Items[0].Selected);
-				task.Answer_2 = Convert.ToInt32(Question3RadioButtonList.Items[1].Selected);
-				task.Answer_3 = Convert.ToInt32(Question3RadioButtonList.Items[2].Selected);
-				task.Answer_4 = Convert.ToInt32(Question3RadioButtonList.Items[3].Selected);
-				DropDownList3.SelectedItem.Text = "ID" + task.ID + ". " + task.Question_1;
+				task = model.ChoiceQuestion.Where(c => c.ID == currentID).FirstOrDefault();
+				task.Question = Question3DescriptionTextBox.Text;
+				task.Answer1 = Question3AnswerTextBox1.Text;
+				task.Answer2 = Question3AnswerTextBox2.Text;
+				task.Answer3 = Question3AnswerTextBox3.Text;
+				task.Answer4 = Question3AnswerTextBox4.Text;
+				for (int i = 0; i < Question3RadioButtonList.Items.Count; i++)
+					if (Question3RadioButtonList.Items[i].Selected)
+						correctAnswer = i;
+				DropDownList3.SelectedItem.Text = "ID" + task.ID + ". " + task.Question;
 
 
-				Question3RadioButtonList.Items[0].Selected = Convert.ToBoolean(task.Answer_1);
-				Question3RadioButtonList.Items[1].Selected = Convert.ToBoolean(task.Answer_2);
-				Question3RadioButtonList.Items[2].Selected = Convert.ToBoolean(task.Answer_3);
-				Question3RadioButtonList.Items[3].Selected = Convert.ToBoolean(task.Answer_4);
+				for (int i = 0; i < Question3RadioButtonList.Items.Count; i++)
+					if (i != correctAnswer)
+						Question3RadioButtonList.Items[i].Selected = false;
+					else
+						Question3RadioButtonList.Items[i].Selected = true;
 			}
 			model.SaveChanges();
 		}
@@ -176,59 +160,57 @@ namespace MTO1
 		{
 			if (DropDownList4.SelectedIndex == 0)
 			{
-				Task task = new Task
+				MultipleChoiceQuestion task = new MultipleChoiceQuestion
 				{
-					ID = Generate_ID(),
-					Question_1 = Question4AnswerTextBox1.Text,
-					Question_2 = Question4AnswerTextBox2.Text,
-					Question_3 = Question4AnswerTextBox3.Text,
-					Question_4 = Question4AnswerTextBox4.Text,
-					Answer_1 = Convert.ToInt32(Question4CheckBox1.Checked),
-					Answer_2 = Convert.ToInt32(Question4CheckBox2.Checked),
-					Answer_3 = Convert.ToInt32(Question4CheckBox3.Checked),
-					Answer_4 = Convert.ToInt32(Question4CheckBox4.Checked),
-					Type = 4,
-					Description = "Выберете верные утверждения"
+					ID = 228,
+					Answer1 = Question4AnswerTextBox1.Text,
+					Answer2 = Question4AnswerTextBox2.Text,
+					Answer3 = Question4AnswerTextBox3.Text,
+					Answer4 = Question4AnswerTextBox4.Text,
+					CorrectAnswer1 = Question4CheckBox1.Checked,
+					CorrectAnswer2 = Question4CheckBox2.Checked,
+					CorrectAnswer3 = Question4CheckBox3.Checked,
+					CorrectAnswer4 = Question4CheckBox4.Checked,
+					Question = "Выберете верные утверждения"
 				};
 				task4.Add(task);
-				tasks.Add(task);
-				model.Task.Add(task);
-				DropDownList4.Items.Add(new ListItem("ID" + task.ID + ". " + task.Description, task.ID.ToString()));
+				model.MultipleChoiceQuestion.Add(task);
+				DropDownList4.Items.Add(new ListItem("ID" + task.ID + ". " + task.Question, task.ID.ToString()));
 				DropDownList4.SelectedValue = task.ID.ToString();
 
-				Question4CheckBox1.Checked = Convert.ToBoolean(task.Answer_1);
-				Question4CheckBox2.Checked = Convert.ToBoolean(task.Answer_2);
-				Question4CheckBox3.Checked = Convert.ToBoolean(task.Answer_3);
-				Question4CheckBox4.Checked = Convert.ToBoolean(task.Answer_4);
+				Question4CheckBox1.Checked = task.CorrectAnswer1;
+				Question4CheckBox2.Checked = task.CorrectAnswer2;
+				Question4CheckBox3.Checked = task.CorrectAnswer3;
+				Question4CheckBox4.Checked = task.CorrectAnswer4;
 			}
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList4.SelectedValue);
-				Task task = task4.FirstOrDefault(c => c.ID == currentID);
-				task.Question_1 = Question4AnswerTextBox1.Text;
-				task.Question_2 = Question4AnswerTextBox2.Text;
-				task.Question_3 = Question4AnswerTextBox3.Text;
-				task.Question_4 = Question4AnswerTextBox4.Text;
-				task.Answer_1 = Convert.ToInt32(Question4CheckBox1.Checked);
-				task.Answer_2 = Convert.ToInt32(Question4CheckBox2.Checked);
-				task.Answer_3 = Convert.ToInt32(Question4CheckBox3.Checked);
-				task.Answer_4 = Convert.ToInt32(Question4CheckBox4.Checked);
+				MultipleChoiceQuestion task = task4.FirstOrDefault(c => c.ID == currentID);
+				task.Answer1 = Question4AnswerTextBox1.Text;
+				task.Answer2 = Question4AnswerTextBox2.Text;
+				task.Answer3 = Question4AnswerTextBox3.Text;
+				task.Answer4 = Question4AnswerTextBox4.Text;
+				task.CorrectAnswer1 = Question4CheckBox1.Checked;
+				task.CorrectAnswer2 = Question4CheckBox2.Checked;
+				task.CorrectAnswer3 = Question4CheckBox3.Checked;
+				task.CorrectAnswer4 = Question4CheckBox4.Checked;
 
-				task = model.Task.Where(c => c.ID == currentID).FirstOrDefault();
-				task.Question_1 = Question4AnswerTextBox1.Text;
-				task.Question_2 = Question4AnswerTextBox2.Text;
-				task.Question_3 = Question4AnswerTextBox3.Text;
-				task.Question_4 = Question4AnswerTextBox4.Text;
-				task.Answer_1 = Convert.ToInt32(Question4CheckBox1.Checked);
-				task.Answer_2 = Convert.ToInt32(Question4CheckBox2.Checked);
-				task.Answer_3 = Convert.ToInt32(Question4CheckBox3.Checked);
-				task.Answer_4 = Convert.ToInt32(Question4CheckBox4.Checked);
-				DropDownList4.SelectedItem.Text = "ID" + task.ID + ". " + task.Description;
+				task = model.MultipleChoiceQuestion.Where(c => c.ID == currentID).FirstOrDefault();
+				task.Answer1 = Question4AnswerTextBox1.Text;
+				task.Answer2 = Question4AnswerTextBox2.Text;
+				task.Answer3 = Question4AnswerTextBox3.Text;
+				task.Answer4 = Question4AnswerTextBox4.Text;
+				task.CorrectAnswer1 = Question4CheckBox1.Checked;
+				task.CorrectAnswer2 = Question4CheckBox2.Checked;
+				task.CorrectAnswer3 = Question4CheckBox3.Checked;
+				task.CorrectAnswer4 = Question4CheckBox4.Checked;
+				DropDownList4.SelectedItem.Text = "ID" + task.ID + ". " + task.Question;
 
-				Question4CheckBox1.Checked = Convert.ToBoolean(task.Answer_1);
-				Question4CheckBox2.Checked = Convert.ToBoolean(task.Answer_2);
-				Question4CheckBox3.Checked = Convert.ToBoolean(task.Answer_3);
-				Question4CheckBox4.Checked = Convert.ToBoolean(task.Answer_4);
+				Question4CheckBox1.Checked = task.CorrectAnswer1;
+				Question4CheckBox2.Checked = task.CorrectAnswer2;
+				Question4CheckBox3.Checked = task.CorrectAnswer3;
+				Question4CheckBox4.Checked = task.CorrectAnswer4;
 			}
 			model.SaveChanges();
 		}
@@ -237,116 +219,114 @@ namespace MTO1
 		{
 			if (DropDownList5.SelectedIndex == 0)
 			{
-				Task task = new Task
+				ComplianceQuestion task = new ComplianceQuestion
 				{
-					ID = Generate_ID(),
-					Question_1 = Question5TextBox1.Text,
-					Question_2 = Question5TextBox2.Text,
-					Question_3 = Question5TextBox3.Text,
-					Question_4 = Question5TextBox4.Text,
-					Answer_1 = Convert.ToInt32(Question5DropDownList1.SelectedValue),
-					Answer_2 = Convert.ToInt32(Question5DropDownList2.SelectedValue),
-					Answer_3 = Convert.ToInt32(Question5DropDownList3.SelectedValue),
-					Answer_4 = Convert.ToInt32(Question5DropDownList4.SelectedValue),
-					AnswerDescription1 = Question5AnswerTextBox1.Text,
-					AnswerDescription2 = Question5AnswerTextBox2.Text,
-					AnswerDescription3 = Question5AnswerTextBox3.Text,
-					AnswerDescription4 = Question5AnswerTextBox4.Text,
-					Type = 5,
+					ID = 228,
+					Question1 = Question5TextBox1.Text,
+					Question2 = Question5TextBox2.Text,
+					Question3 = Question5TextBox3.Text,
+					Question4 = Question5TextBox4.Text,
+					CorrectAnswer1 = Convert.ToInt32(Question5DropDownList1.SelectedValue),
+					CorrectAnswer2 = Convert.ToInt32(Question5DropDownList2.SelectedValue),
+					CorrectAnswer3 = Convert.ToInt32(Question5DropDownList3.SelectedValue),
+					CorrectAnswer4 = Convert.ToInt32(Question5DropDownList4.SelectedValue),
+					Answer1 = Question5AnswerTextBox1.Text,
+					Answer2 = Question5AnswerTextBox2.Text,
+					Answer3 = Question5AnswerTextBox3.Text,
+					Answer4 = Question5AnswerTextBox4.Text,
 					Description = "Поставьте в соответствие утверждения из первого столбца с номером утверждения из второго"
 				};
 				task5.Add(task);
-				tasks.Add(task);
-				model.Task.Add(task);
+				model.ComplianceQuestion.Add(task);
 				DropDownList5.Items.Add(new ListItem("ID" + task.ID + ". " + task.Description, task.ID.ToString()));
 				DropDownList5.SelectedValue = task.ID.ToString();
 
-				Question5DropDownList1.SelectedValue = task.Answer_1.ToString();
-				Question5DropDownList2.SelectedValue = task.Answer_2.ToString();
-				Question5DropDownList3.SelectedValue = task.Answer_3.ToString();
-				Question5DropDownList4.SelectedValue = task.Answer_4.ToString();
+				Question5DropDownList1.SelectedValue = task.CorrectAnswer1.ToString();
+				Question5DropDownList2.SelectedValue = task.CorrectAnswer2.ToString();
+				Question5DropDownList3.SelectedValue = task.CorrectAnswer3.ToString();
+				Question5DropDownList4.SelectedValue = task.CorrectAnswer4.ToString();
 
 			}
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList5.SelectedValue);
-				Task task = task5.FirstOrDefault(c => c.ID == currentID);
-				task.Question_1 = Question5TextBox1.Text;
-				task.Question_2 = Question5TextBox2.Text;
-				task.Question_3 = Question5TextBox3.Text;
-				task.Question_4 = Question5TextBox4.Text;
-				task.Answer_1 = Convert.ToInt32(Question5DropDownList1.SelectedValue);
-				task.Answer_2 = Convert.ToInt32(Question5DropDownList2.SelectedValue);
-				task.Answer_3 = Convert.ToInt32(Question5DropDownList3.SelectedValue);
-				task.Answer_4 = Convert.ToInt32(Question5DropDownList4.SelectedValue);
-				task.AnswerDescription1 = Question5AnswerTextBox1.Text;
-				task.AnswerDescription2 = Question5AnswerTextBox2.Text;
-				task.AnswerDescription3 = Question5AnswerTextBox3.Text;
-				task.AnswerDescription4 = Question5AnswerTextBox4.Text;
+				ComplianceQuestion task = task5.FirstOrDefault(c => c.ID == currentID);
+				task.Question1 = Question5TextBox1.Text;
+				task.Question2 = Question5TextBox2.Text;
+				task.Question3 = Question5TextBox3.Text;
+				task.Question4 = Question5TextBox4.Text;
+				task.CorrectAnswer1 = Convert.ToInt32(Question5DropDownList1.SelectedValue);
+				task.CorrectAnswer2 = Convert.ToInt32(Question5DropDownList2.SelectedValue);
+				task.CorrectAnswer3 = Convert.ToInt32(Question5DropDownList3.SelectedValue);
+				task.CorrectAnswer4 = Convert.ToInt32(Question5DropDownList4.SelectedValue);
+				task.Answer1 = Question5AnswerTextBox1.Text;
+				task.Answer2 = Question5AnswerTextBox2.Text;
+				task.Answer3 = Question5AnswerTextBox3.Text;
+				task.Answer4 = Question5AnswerTextBox4.Text;
 
-				task = model.Task.Where(c => c.ID == currentID).FirstOrDefault();
-				task.Question_1 = Question5TextBox1.Text;
-				task.Question_2 = Question5TextBox2.Text;
-				task.Question_3 = Question5TextBox3.Text;
-				task.Question_4 = Question5TextBox4.Text;
-				task.Answer_1 = Convert.ToInt32(Question5DropDownList1.SelectedValue);
-				task.Answer_2 = Convert.ToInt32(Question5DropDownList2.SelectedValue);
-				task.Answer_3 = Convert.ToInt32(Question5DropDownList3.SelectedValue);
-				task.Answer_4 = Convert.ToInt32(Question5DropDownList4.SelectedValue);
-				task.AnswerDescription1 = Question5AnswerTextBox1.Text;
-				task.AnswerDescription2 = Question5AnswerTextBox2.Text;
-				task.AnswerDescription3 = Question5AnswerTextBox3.Text;
-				task.AnswerDescription4 = Question5AnswerTextBox4.Text;
+				task = model.ComplianceQuestion.Where(c => c.ID == currentID).FirstOrDefault();
+				task.Question1 = Question5TextBox1.Text;
+				task.Question2 = Question5TextBox2.Text;
+				task.Question3 = Question5TextBox3.Text;
+				task.Question4 = Question5TextBox4.Text;
+				task.CorrectAnswer1 = Convert.ToInt32(Question5DropDownList1.SelectedValue);
+				task.CorrectAnswer2 = Convert.ToInt32(Question5DropDownList2.SelectedValue);
+				task.CorrectAnswer3 = Convert.ToInt32(Question5DropDownList3.SelectedValue);
+				task.CorrectAnswer4 = Convert.ToInt32(Question5DropDownList4.SelectedValue);
+				task.Answer1 = Question5AnswerTextBox1.Text;
+				task.Answer2 = Question5AnswerTextBox2.Text;
+				task.Answer3 = Question5AnswerTextBox3.Text;
+				task.Answer4 = Question5AnswerTextBox4.Text;
 				DropDownList5.SelectedItem.Text = "ID" + task.ID + ". " + task.Description;
 
-				Question5DropDownList1.SelectedValue = task.Answer_1.ToString();
-				Question5DropDownList2.SelectedValue = task.Answer_2.ToString();
-				Question5DropDownList3.SelectedValue = task.Answer_3.ToString();
-				Question5DropDownList4.SelectedValue = task.Answer_4.ToString();
+				Question5DropDownList1.SelectedValue = task.CorrectAnswer1.ToString();
+				Question5DropDownList2.SelectedValue = task.CorrectAnswer2.ToString();
+				Question5DropDownList3.SelectedValue = task.CorrectAnswer3.ToString();
+				Question5DropDownList4.SelectedValue = task.CorrectAnswer4.ToString();
 			}
 			model.SaveChanges();
 		}
 
 		protected void CheckYourselfLabel_Init(object sender, EventArgs e)
 		{
-			foreach (Task c in task1)
+			foreach (TextQuestion c in task1)
 			{
-				ListItem question1 = new ListItem();
-				question1.Value = c.ID.ToString();
-				question1.Text = "ID" + c.ID + ". " + c.Question_1;
-				DropDownList1.Items.Add(question1);
+				ListItem question = new ListItem();
+				question.Value = c.ID.ToString();
+				question.Text = "ID" + c.ID + ". " + c.Question;
+				DropDownList1.Items.Add(question);
 			}
 
-			foreach (Task c in task2)
+			foreach (NumberQuestion c in task2)
 			{
-				ListItem question1 = new ListItem();
-				question1.Value = c.ID.ToString();
-				question1.Text = "ID" + c.ID + ". " + c.Question_1;
-				DropDownList2.Items.Add(question1);
+				ListItem question = new ListItem();
+				question.Value = c.ID.ToString();
+				question.Text = "ID" + c.ID + ". " + c.Question;
+				DropDownList2.Items.Add(question);
 			}
 
-			foreach (Task c in task3)
+			foreach (ChoiceQuestion c in task3)
 			{
-				ListItem question1 = new ListItem();
-				question1.Value = c.ID.ToString();
-				question1.Text = "ID" + c.ID + ". " + c.Question_1;
-				DropDownList3.Items.Add(question1);
+				ListItem question = new ListItem();
+				question.Value = c.ID.ToString();
+				question.Text = "ID" + c.ID + ". " + c.Question;
+				DropDownList3.Items.Add(question);
 			}
 
-			foreach (Task c in task4)
+			foreach (MultipleChoiceQuestion c in task4)
 			{
-				ListItem question1 = new ListItem();
-				question1.Value = c.ID.ToString();
-				question1.Text = "ID" + c.ID + ". " + c.Description;
-				DropDownList4.Items.Add(question1);
+				ListItem question = new ListItem();
+				question.Value = c.ID.ToString();
+				question.Text = "ID" + c.ID + ". " + c.Question;
+				DropDownList4.Items.Add(question);
 			}
 
-			foreach (Task c in task5)
+			foreach (ComplianceQuestion c in task5)
 			{
-				ListItem question1 = new ListItem();
-				question1.Value = c.ID.ToString();
-				question1.Text = "ID" + c.ID + ". " + c.Description;
-				DropDownList5.Items.Add(question1);
+				ListItem question = new ListItem();
+				question.Value = c.ID.ToString();
+				question.Text = "ID" + c.ID + ". " + c.Description;
+				DropDownList5.Items.Add(question);
 			}
 		}
 
@@ -360,8 +340,8 @@ namespace MTO1
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList1.SelectedValue);
-				Question1DescriptionTextBox.Text = task1.FirstOrDefault(c => c.ID == currentID).Question_1;
-				Question1AnswerTextBox.Text = task1.FirstOrDefault(c => c.ID == currentID).AnswerDescription1;
+				Question1DescriptionTextBox.Text = task1.FirstOrDefault(c => c.ID == currentID).Question;
+				Question1AnswerTextBox.Text = task1.FirstOrDefault(c => c.ID == currentID).Answer;
 			}
 		}
 
@@ -375,8 +355,8 @@ namespace MTO1
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList2.SelectedValue);
-				Question2DescriptionTextBox.Text = task2.FirstOrDefault(c => c.ID == currentID).Question_1;
-				Question2AnswerTextBox.Text = task2.FirstOrDefault(c => c.ID == currentID).AnswerDescription1;
+				Question2DescriptionTextBox.Text = task2.FirstOrDefault(c => c.ID == currentID).Question;
+				Question2AnswerTextBox.Text = task2.FirstOrDefault(c => c.ID == currentID).Answer.ToString();
 			}
 		}
 
@@ -394,15 +374,13 @@ namespace MTO1
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList3.SelectedValue);
-				Question3DescriptionTextBox.Text = task3.FirstOrDefault(c => c.ID == currentID).Question_1;
-				Question3AnswerTextBox1.Text = task3.FirstOrDefault(c => c.ID == currentID).AnswerDescription1;
-				Question3AnswerTextBox2.Text = task3.FirstOrDefault(c => c.ID == currentID).AnswerDescription2;
-				Question3AnswerTextBox3.Text = task3.FirstOrDefault(c => c.ID == currentID).AnswerDescription3;
-				Question3AnswerTextBox4.Text = task3.FirstOrDefault(c => c.ID == currentID).AnswerDescription4;
-				Question3RadioButtonList.Items[0].Selected = Convert.ToBoolean(task3.FirstOrDefault(c => c.ID == currentID).Answer_1);
-				Question3RadioButtonList.Items[1].Selected = Convert.ToBoolean(task3.FirstOrDefault(c => c.ID == currentID).Answer_2);
-				Question3RadioButtonList.Items[2].Selected = Convert.ToBoolean(task3.FirstOrDefault(c => c.ID == currentID).Answer_3);
-				Question3RadioButtonList.Items[3].Selected = Convert.ToBoolean(task3.FirstOrDefault(c => c.ID == currentID).Answer_4);
+				Question3DescriptionTextBox.Text = task3.FirstOrDefault(c => c.ID == currentID).Question;
+				Question3AnswerTextBox1.Text = task3.FirstOrDefault(c => c.ID == currentID).Answer1;
+				Question3AnswerTextBox2.Text = task3.FirstOrDefault(c => c.ID == currentID).Answer2;
+				Question3AnswerTextBox3.Text = task3.FirstOrDefault(c => c.ID == currentID).Answer3;
+				Question3AnswerTextBox4.Text = task3.FirstOrDefault(c => c.ID == currentID).Answer4;
+				for (int i = 0; i < Question3RadioButtonList.Items.Count; i++)
+					Question3RadioButtonList.Items[i].Selected = i == task3.FirstOrDefault(c => c.ID == currentID).CorrectAnswer - 1 ? true : false;
 			}
 		}
 
@@ -424,15 +402,15 @@ namespace MTO1
 			else
 			{
 				currentID = Convert.ToInt32(DropDownList4.SelectedValue);
-				Question4DescriptionTextBox.Text = task4.FirstOrDefault(c => c.ID == currentID).Description;
-				Question4AnswerTextBox1.Text = task4.FirstOrDefault(c => c.ID == currentID).Question_1;
-				Question4AnswerTextBox2.Text = task4.FirstOrDefault(c => c.ID == currentID).Question_2;
-				Question4AnswerTextBox3.Text = task4.FirstOrDefault(c => c.ID == currentID).Question_3;
-				Question4AnswerTextBox4.Text = task4.FirstOrDefault(c => c.ID == currentID).Question_4;
-				Question4CheckBox1.Checked = Convert.ToBoolean(task4.FirstOrDefault(c => c.ID == currentID).Answer_1);
-				Question4CheckBox2.Checked = Convert.ToBoolean(task4.FirstOrDefault(c => c.ID == currentID).Answer_2);
-				Question4CheckBox3.Checked = Convert.ToBoolean(task4.FirstOrDefault(c => c.ID == currentID).Answer_3);
-				Question4CheckBox4.Checked = Convert.ToBoolean(task4.FirstOrDefault(c => c.ID == currentID).Answer_4);
+				Question4DescriptionTextBox.Text = task4.FirstOrDefault(c => c.ID == currentID).Question;
+				Question4AnswerTextBox1.Text = task4.FirstOrDefault(c => c.ID == currentID).Answer1;
+				Question4AnswerTextBox2.Text = task4.FirstOrDefault(c => c.ID == currentID).Answer2;
+				Question4AnswerTextBox3.Text = task4.FirstOrDefault(c => c.ID == currentID).Answer3;
+				Question4AnswerTextBox4.Text = task4.FirstOrDefault(c => c.ID == currentID).Answer4;
+				Question4CheckBox1.Checked = task4.FirstOrDefault(c => c.ID == currentID).CorrectAnswer1;
+				Question4CheckBox2.Checked = task4.FirstOrDefault(c => c.ID == currentID).CorrectAnswer2;
+				Question4CheckBox3.Checked = task4.FirstOrDefault(c => c.ID == currentID).CorrectAnswer3;
+				Question4CheckBox4.Checked = task4.FirstOrDefault(c => c.ID == currentID).CorrectAnswer4;
 			}
 		}
 
@@ -459,18 +437,18 @@ namespace MTO1
 			{
 				currentID = Convert.ToInt32(DropDownList5.SelectedValue);
 				Question5DescriptionTextBox.Text = task5.FirstOrDefault(c => c.ID == currentID).Description;
-				Question5TextBox1.Text = task5.FirstOrDefault(c => c.ID == currentID).Question_1;
-				Question5TextBox2.Text = task5.FirstOrDefault(c => c.ID == currentID).Question_2;
-				Question5TextBox3.Text = task5.FirstOrDefault(c => c.ID == currentID).Question_3;
-				Question5TextBox4.Text = task5.FirstOrDefault(c => c.ID == currentID).Question_4;
-				Question5AnswerTextBox1.Text = task5.FirstOrDefault(c => c.ID == currentID).AnswerDescription1;
-				Question5AnswerTextBox2.Text = task5.FirstOrDefault(c => c.ID == currentID).AnswerDescription2;
-				Question5AnswerTextBox3.Text = task5.FirstOrDefault(c => c.ID == currentID).AnswerDescription3;
-				Question5AnswerTextBox4.Text = task5.FirstOrDefault(c => c.ID == currentID).AnswerDescription4;
-				Question5DropDownList1.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).Answer_1.ToString();
-				Question5DropDownList2.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).Answer_2.ToString();
-				Question5DropDownList3.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).Answer_3.ToString();
-				Question5DropDownList4.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).Answer_4.ToString();
+				Question5TextBox1.Text = task5.FirstOrDefault(c => c.ID == currentID).Question1;
+				Question5TextBox2.Text = task5.FirstOrDefault(c => c.ID == currentID).Question2;
+				Question5TextBox3.Text = task5.FirstOrDefault(c => c.ID == currentID).Question3;
+				Question5TextBox4.Text = task5.FirstOrDefault(c => c.ID == currentID).Question4;
+				Question5AnswerTextBox1.Text = task5.FirstOrDefault(c => c.ID == currentID).Answer1;
+				Question5AnswerTextBox2.Text = task5.FirstOrDefault(c => c.ID == currentID).Answer2;
+				Question5AnswerTextBox3.Text = task5.FirstOrDefault(c => c.ID == currentID).Answer3;
+				Question5AnswerTextBox4.Text = task5.FirstOrDefault(c => c.ID == currentID).Answer4;
+				Question5DropDownList1.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).CorrectAnswer1.ToString();
+				Question5DropDownList2.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).CorrectAnswer2.ToString();
+				Question5DropDownList3.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).CorrectAnswer3.ToString();
+				Question5DropDownList4.SelectedValue = task5.FirstOrDefault(c => c.ID == currentID).CorrectAnswer4.ToString();
 			}
 		}
 

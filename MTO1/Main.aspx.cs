@@ -16,7 +16,7 @@ namespace MTO1
                 Response.Redirect("~/Default.aspx");
             else
             {
-                Label1.Text = "Вы авторизовались под ID = " + cookie["Login"] + ". Запомните его!!!";
+                Label1.Text = "Вы авторизовались по логину = " + cookie["Login"];
                 Label1.ForeColor = System.Drawing.Color.Red;
                 if (cookie["IsStudent"] == "0" && ViewState["FirstTime"] == null)
                 {

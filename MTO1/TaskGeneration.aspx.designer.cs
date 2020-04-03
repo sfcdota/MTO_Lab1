@@ -51,58 +51,13 @@ namespace MTO1
 		protected global::System.Web.UI.WebControls.Label QuestionLabel;
 
 		/// <summary>
-		/// Label1 control.
+		/// EquationLabel control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label1;
-
-		/// <summary>
-		/// A11Label control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label A11Label;
-
-		/// <summary>
-		/// A12Label control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label A12Label;
-
-		/// <summary>
-		/// A21Label control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label A21Label;
-
-		/// <summary>
-		/// A22Label control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label A22Label;
-
-		/// <summary>
-		/// Label2 control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label Label2;
+		protected global::System.Web.UI.WebControls.Label EquationLabel;
 
 		/// <summary>
 		/// Question1EnterLabel control.
@@ -139,5 +94,14 @@ namespace MTO1
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Label AnswerLabel;
+
+		/// <summary>
+		/// NextButton control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button NextButton;
 	}
 }

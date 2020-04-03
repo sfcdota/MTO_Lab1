@@ -25,7 +25,7 @@ namespace MTO1
             else
             {
                 int currentid = questionid[0];
-                if (AnswerTextBox1.Text.ToLower() == model.Task.Where(c => c.ID == currentid).FirstOrDefault().AnswerDescription1.ToLower())
+                if (AnswerTextBox1.Text.ToLower() == model.TextQuestion.Where(c => c.ID == currentid).FirstOrDefault().Answer.ToLower())
                 {
                     AnswerLabel1.Text = "Ответ верный";
                     AnswerLabel1.ForeColor = System.Drawing.Color.Green;
@@ -51,7 +51,7 @@ namespace MTO1
             else
             {
                 int currentid = questionid[1];
-                if (AnswerTextBox2.Text.ToLower() == model.Task.Where(c => c.ID == currentid).FirstOrDefault().AnswerDescription1.ToLower())
+                if (AnswerTextBox2.Text.ToLower() == model.NumberQuestion.Where(c => c.ID == currentid).FirstOrDefault().Answer.ToString())
                 {
                     AnswerLabel2.Text = "Ответ верный";
                     AnswerLabel2.ForeColor = System.Drawing.Color.Green;
@@ -78,10 +78,7 @@ namespace MTO1
             else
             {
                 int currentid = questionid[2];
-                if (Convert.ToInt32(Question3RadioButtonList.Items[0].Selected) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_1
-                    && Convert.ToInt32(Question3RadioButtonList.Items[1].Selected) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_2
-                    && Convert.ToInt32(Question3RadioButtonList.Items[2].Selected) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_3
-                    && Convert.ToInt32(Question3RadioButtonList.Items[3].Selected) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_4)
+                if (Question3RadioButtonList.Items[model.ChoiceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer].Selected)
                 {
                     AnswerLabel3.Text = "Ответ верный";
                     AnswerLabel3.ForeColor = System.Drawing.Color.Green;
@@ -108,10 +105,10 @@ namespace MTO1
             else
             {
                 int currentid = questionid[3];
-                if (Convert.ToInt32(Question4CheckBox1.Checked) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_1
-                    && Convert.ToInt32(Question4CheckBox2.Checked) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_2
-                    && Convert.ToInt32(Question4CheckBox3.Checked) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_3
-                    && Convert.ToInt32(Question4CheckBox4.Checked) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_4)
+                if (Question4CheckBox1.Checked == model.MultipleChoiceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer1
+                    && Question4CheckBox2.Checked == model.MultipleChoiceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer2
+                    && Question4CheckBox3.Checked == model.MultipleChoiceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer3
+                    && Question4CheckBox4.Checked == model.MultipleChoiceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer4)
                 {
                     AnswerLabel4.Text = "Ответ верный";
                     AnswerLabel4.ForeColor = System.Drawing.Color.Green;
@@ -129,10 +126,10 @@ namespace MTO1
         protected void GetAnswerButton5_Click(object sender, EventArgs e)
         {
             int currentid = questionid[4];
-            if (Convert.ToInt32(Question5DropDownList1.SelectedValue) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_1
-                && Convert.ToInt32(Question5DropDownList2.SelectedValue) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_2
-                && Convert.ToInt32(Question5DropDownList3.SelectedValue) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_3
-                && Convert.ToInt32(Question5DropDownList4.SelectedValue) == model.Task.Where(c => c.ID == currentid).FirstOrDefault().Answer_4)
+            if (Convert.ToInt32(Question5DropDownList1.SelectedValue) == model.ComplianceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer1
+                && Convert.ToInt32(Question5DropDownList2.SelectedValue) == model.ComplianceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer2
+                && Convert.ToInt32(Question5DropDownList3.SelectedValue) == model.ComplianceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer3
+                && Convert.ToInt32(Question5DropDownList4.SelectedValue) == model.ComplianceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer4)
             {
                 AnswerLabel5.Text = "Ответ верный";
                 AnswerLabel5.ForeColor = System.Drawing.Color.Green;
@@ -154,42 +151,46 @@ namespace MTO1
         {
 
             int index = questionid[0];
-            QuestionLabel1.Text = "Вопрос 1: " + model.Task.Where(c => c.ID == index).First().Question_1;
+            QuestionLabel1.Text = "Вопрос 1: " + model.TextQuestion.Where(c => c.ID == index).First().Question;
             index = questionid[1];
-            QuestionLabel2.Text = "Вопрос 2: " + model.Task.Where(c => c.ID == index).First().Question_1;
+            QuestionLabel2.Text = "Вопрос 2: " + model.NumberQuestion.Where(c => c.ID == index).First().Question;
 
             index = questionid[2];
-            QuestionLabel3.Text = "Вопрос 3: " + model.Task.Where(c => c.ID == index).First().Question_1;
-            Question3RadioButtonList.Items[0].Text = model.Task.Where(c => c.ID == index).First().AnswerDescription1;
-            Question3RadioButtonList.Items[1].Text = model.Task.Where(c => c.ID == index).First().AnswerDescription2;
-            Question3RadioButtonList.Items[2].Text = model.Task.Where(c => c.ID == index).First().AnswerDescription3;
-            Question3RadioButtonList.Items[3].Text = model.Task.Where(c => c.ID == index).First().AnswerDescription4;
+            QuestionLabel3.Text = "Вопрос 3: " + model.ChoiceQuestion.Where(c => c.ID == index).First().Question;
+            Question3RadioButtonList.Items[0].Text = model.ChoiceQuestion.Where(c => c.ID == index).First().Answer1;
+            Question3RadioButtonList.Items[1].Text = model.ChoiceQuestion.Where(c => c.ID == index).First().Answer2;
+            Question3RadioButtonList.Items[2].Text = model.ChoiceQuestion.Where(c => c.ID == index).First().Answer3;
+            Question3RadioButtonList.Items[3].Text = model.ChoiceQuestion.Where(c => c.ID == index).First().Answer4;
 
             index = questionid[3];
-            QuestionLabel4.Text = "Вопрос 4: " + model.Task.Where(c => c.ID == index).First().Description;
-            Question4CheckBox1.Text = model.Task.Where(c => c.ID == index).First().Question_1;
-            Question4CheckBox2.Text = model.Task.Where(c => c.ID == index).First().Question_2;
-            Question4CheckBox3.Text = model.Task.Where(c => c.ID == index).First().Question_3;
-            Question4CheckBox4.Text = model.Task.Where(c => c.ID == index).First().Question_4;
+            QuestionLabel4.Text = "Вопрос 4: " + model.MultipleChoiceQuestion.Where(c => c.ID == index).First().Question;
+            Question4CheckBox1.Text = model.MultipleChoiceQuestion.Where(c => c.ID == index).First().Answer1;
+            Question4CheckBox2.Text = model.MultipleChoiceQuestion.Where(c => c.ID == index).First().Answer2;
+            Question4CheckBox3.Text = model.MultipleChoiceQuestion.Where(c => c.ID == index).First().Answer3;
+            Question4CheckBox4.Text = model.MultipleChoiceQuestion.Where(c => c.ID == index).First().Answer4;
 
             index = questionid[4];
-            QuestionLabel5.Text = "Вопрос 5: " + model.Task.Where(c => c.ID == index).First().Description;
-            Question5Label1.Text = model.Task.Where(c => c.ID == index).First().Question_1;
-            Question5Label5.Text = "1. " + model.Task.Where(c => c.ID == index).First().AnswerDescription1;
-            Question5Label6.Text = "2. " + model.Task.Where(c => c.ID == index).First().AnswerDescription2;
-            Question5Label7.Text = "3. " + model.Task.Where(c => c.ID == index).First().AnswerDescription3;
-            Question5Label8.Text = "4. " + model.Task.Where(c => c.ID == index).First().AnswerDescription4;
+            QuestionLabel5.Text = "Вопрос 5: " + model.ComplianceQuestion.Where(c => c.ID == index).First().Description;
+            Question5Label1.Text = model.ComplianceQuestion.Where(c => c.ID == index).First().Question1;
+            Question5Label2.Text = model.ComplianceQuestion.Where(c => c.ID == index).First().Question2;
+            Question5Label3.Text = model.ComplianceQuestion.Where(c => c.ID == index).First().Question3;
+            Question5Label4.Text = model.ComplianceQuestion.Where(c => c.ID == index).First().Question4;
+
+            Question5Label5.Text = "1. " + model.ComplianceQuestion.Where(c => c.ID == index).First().Answer1;
+            Question5Label6.Text = "2. " + model.ComplianceQuestion.Where(c => c.ID == index).First().Answer2;
+            Question5Label7.Text = "3. " + model.ComplianceQuestion.Where(c => c.ID == index).First().Answer3;
+            Question5Label8.Text = "4. " + model.ComplianceQuestion.Where(c => c.ID == index).First().Answer4;
 
             int maxlength = 0;
             if (Question5Label1.Text.Length > maxlength)
                 maxlength = Question5Label1.Text.Length;
-            Question5Label2.Text = model.Task.Where(c => c.ID == index).First().Question_2;
+            Question5Label2.Text = model.ComplianceQuestion.Where(c => c.ID == index).First().Question2;
             if (Question5Label2.Text.Length > maxlength)
                 maxlength = Question5Label2.Text.Length;
-            Question5Label3.Text = model.Task.Where(c => c.ID == index).First().Question_3;
+            Question5Label3.Text = model.ComplianceQuestion.Where(c => c.ID == index).First().Question3;
             if (Question5Label3.Text.Length > maxlength)
                 maxlength = Question5Label3.Text.Length;
-            Question5Label4.Text = model.Task.Where(c => c.ID == index).First().Question_4;
+            Question5Label4.Text = model.ComplianceQuestion.Where(c => c.ID == index).First().Question4;
             if (Question5Label4.Text.Length > maxlength)
                 maxlength = Question5Label4.Text.Length;
             Question5Label1.Width = Convert.ToInt32(7 * 1.33 * maxlength);
@@ -201,11 +202,12 @@ namespace MTO1
         protected void Randomize()
         {
             Random rand = new Random();
-            questionid[0] = model.Task.Where(c => c.Type == 1).ToList()[rand.Next(model.Task.Where(c => c.Type == 1).ToList().Count)].ID;
-            questionid[1] = model.Task.Where(c => c.Type == 2).ToList()[rand.Next(model.Task.Where(c => c.Type == 2).ToList().Count)].ID;
-            questionid[2] = model.Task.Where(c => c.Type == 3).ToList()[rand.Next(model.Task.Where(c => c.Type == 3).ToList().Count)].ID;
-            questionid[3] = model.Task.Where(c => c.Type == 4).ToList()[rand.Next(model.Task.Where(c => c.Type == 4).ToList().Count)].ID;
-            questionid[4] = model.Task.Where(c => c.Type == 5).ToList()[rand.Next(model.Task.Where(c => c.Type == 5).ToList().Count)].ID;
+            questionid[0] = model.TextQuestion.ToList()[rand.Next(model.TextQuestion.ToList().Count)].ID;
+            questionid[1] = model.NumberQuestion.ToList()[rand.Next(model.NumberQuestion.ToList().Count)].ID;
+            questionid[2] = model.ChoiceQuestion.ToList()[rand.Next(model.ChoiceQuestion.ToList().Count)].ID;
+            questionid[3] = model.MultipleChoiceQuestion.ToList()[rand.Next(model.MultipleChoiceQuestion.ToList().Count)].ID;
+            questionid[4] = model.ComplianceQuestion.ToList()[rand.Next(model.ComplianceQuestion.ToList().Count)].ID;
+
         }
 
         protected void Page_Load(object sender, EventArgs e)

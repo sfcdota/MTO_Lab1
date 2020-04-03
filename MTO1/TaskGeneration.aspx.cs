@@ -21,53 +21,33 @@ namespace MTO1
                 Response.Redirect("~/TaskGenerationResults.aspx");
             else
             {
-                int studentid = Convert.ToInt32(cookie["Login"]);
-                Generation generation = model.Generation.Where(c => c.StudentID == studentid).FirstOrDefault();
-                if (generation == null)
+                if (Request.Cookies["StudentMark"] == null)
                 {
-                    int a11 = random.Next(-15, 15);
-                    int a12 = random.Next(-15, 15);
-                    int a21 = random.Next(-15, 15);
-                    int a22 = random.Next(-15, 15);
-
-                    while (model.Generation.Where(a => (a.a11 == a11 && a.a12 == a12 && a.a21 == a21 && a.a22 == a22)).FirstOrDefault() != null)
+                    HttpCookie studentMark = new HttpCookie("Mark");
+                    studentMark["Login"] = cookie["Login"];
+                    studentMark["EquationNumber"] = "1";
+                    studentMark["EquationID"] = "";
+                    studentMark.Expires = DateTime.Now.AddDays(30);
+                    Response.Cookies.Add(studentMark);
+                }
+                HttpCookie mark = Request.Cookies["StudentMark"];
+                if (mark["EquationNumber"] == "1" || mark["EquationNumber"] == "2")
+                {
+                    if (mark["EquationID"] == "")
                     {
-                        a11 = random.Next(-15, 15);
-                        a12 = random.Next(-15, 15);
-                        a21 = random.Next(-15, 15);
-                        a22 = random.Next(-15, 15);
+                        mark["EquationID"] = GenerateEquationID();
+                        Response.Cookies["StudentMark"]["EquationID"] = mark["EquationID"];
                     }
-                    A11Label.Text = a11.ToString();
-                    A12Label.Text = a12.ToString();
-                    A21Label.Text = a21.ToString();
-                    A22Label.Text = a22.ToString();
-                    int id = 0;
-                    foreach (Generation c in model.Generation.ToList())
-                    {
-                        foreach (Generation c1 in model.Generation.ToList())
-                            if (id == c1.ID)
-                                id++;
-                    }
-                    generation = new Generation
-                    {
-                        ID = id,
-                        a11 = a11,
-                        a12 = a12,
-                        a21 = a21,
-                        a22 = a22,
-                        Answer = nullint,
-                        StudentID = studentid
-                    };
-                    model.Generation.Add(generation);
-                    model.SaveChanges();
+                    int currentID = Convert.ToInt32(mark["EquationID"]);
+                    Generation generation = model.Generation.Where(c => c.ID == currentID).FirstOrDefault();
+                    EquationLabel.Text = generation.a.ToString() + "x * x " + generation.b.ToString() + "x " + generation.c.ToString() + " = 0";
                 }
                 else
                 {
-                    A11Label.Text = generation.a11.ToString();
-                    A12Label.Text = generation.a12.ToString();
-                    A21Label.Text = generation.a21.ToString();
-                    A22Label.Text = generation.a22.ToString();
-                    AnswerLabel.Text = "Ответ отправлен. Ваша оценка " + model.Student.Where(c => c.ID == studentid).FirstOrDefault().Mark + " баллов";
+                    int currentid = Convert.ToInt32(mark["CurrentEquationID"]);
+                    Generation generation = model.Generation.Where(c => c.ID == currentid).FirstOrDefault();
+                    EquationLabel.Text = generation.a.ToString() + "x * x " + generation.b.ToString() + "x " + generation.c.ToString() + " = 0";
+                    AnswerLabel.Text = "Ваша оценка " + model.Student.Where(d => d.Login == cookie["Login"]).FirstOrDefault().Mark + " баллов";
                     AnswerButton.Enabled = false;
                     AnswerLabel.Visible = true;
                 }
@@ -77,19 +57,75 @@ namespace MTO1
         protected void GetAnswerButton1_Click(object sender, EventArgs e)
         {
             HttpCookie cookie = Request.Cookies["LoginInfo"];
-            int studentid = Convert.ToInt32(cookie["Login"]);
-            Generation generation = model.Generation.Where(c => c.StudentID == studentid).FirstOrDefault();
-            if (generation.Answer == null || generation.Answer == nullint)
+            HttpCookie mark = Request.Cookies["StudentMark"];
+            int equationID = Convert.ToInt32(mark["EquationID"]);
+            string login = cookie["Login"];
+            if (mark["EquationNumber"] == "1")
             {
-                if (Convert.ToInt32(AnswerTextBox1.Text) == generation.a11 * generation.a22 - generation.a12 * generation.a21)
-                    model.Student.Where(c => c.ID == studentid).FirstOrDefault().Mark = 100;
-                else
-                    model.Student.Where(c => c.ID == studentid).FirstOrDefault().Mark = 0;
-                model.Student.Where(c => c.ID == studentid).FirstOrDefault().Last_Test_Date = DateTime.Now.Date;
-                model.SaveChanges();
-                AnswerLabel.Text = "Ответ отправлен. Ваша оценка " + model.Student.Where(c => c.ID == studentid).FirstOrDefault().Mark + " баллов";
+                model.Student.Where(c => c.Login == login).FirstOrDefault().Mark = Answer(equationID) == AnswerTextBox1.Text ? 50 : 0;
+                AnswerLabel.Text = "Ответ отправлен. Ваша оценка за текущее задание = " + model.Student.Where(c => c.Login == login).FirstOrDefault().Mark +
+                    "/50 баллов. Перейти к следующему заданию?";
+                AnswerLabel.Visible = true;
+                NextButton.Visible = true;
+            }
+            if (mark["EquationNumber"] == "2")
+            {
+                model.Student.Where(c => c.Login == login).FirstOrDefault().Mark = Answer(equationID) == AnswerTextBox1.Text ?
+                    model.Student.Where(c => c.Login == login).FirstOrDefault().Mark + 50 :
+                    model.Student.Where(c => c.Login == login).FirstOrDefault().Mark;
+                model.Student.Where(c => c.Login == login).FirstOrDefault().Last_Test_Date = DateTime.Now.Date;
+                AnswerLabel.Text = "Ваша оценка " + model.Student.Where(c => c.Login == login).FirstOrDefault().Mark + " баллов";
                 AnswerLabel.Visible = true;
             }
+           model.SaveChanges();
+        }
+
+        protected string Answer(int equationID)
+        {
+            int a = model.Generation.Where(e => e.ID == equationID).FirstOrDefault().a;
+            int b = model.Generation.Where(e => e.ID == equationID).FirstOrDefault().b;
+            int c = model.Generation.Where(e => e.ID == equationID).FirstOrDefault().c;
+            double d;
+            if (a != 0)
+            {
+                d = Math.Pow(b, 2) - 4 * a * c;
+                if (d == 0)
+                    return ((-b + Math.Sqrt(d)) / (2 * a)).ToString();
+                else
+                if (d > 0)
+                    return ((-b + Math.Sqrt(d)) / (2 * a)).ToString() + " " + ((-b - Math.Sqrt(d)) / (2 * a)).ToString();
+                else
+                    return "0";
+            }
+            else
+                if (b != 0)
+                return (-c * 1.0 / b).ToString();
+                else
+                    return "0";
+        }
+
+        protected string GenerateEquationID()
+        {
+            int a = random.Next(-20, 20);
+            int b = random.Next(-20, 20);
+            int c = random.Next(-20, 20);
+
+            while (model.Generation.Where(d => (d.a == a && d.b == b && d.c == c)).FirstOrDefault() != null)
+            {
+                a = random.Next(-20, 20);
+                b = random.Next(-20, 20);
+                c = random.Next(-20, 20);
+            }
+            Generation generation = new Generation
+            {
+                ID = 228,
+                a = a,
+                b = b,
+                c = c
+            };
+            model.Generation.Add(generation);
+            model.SaveChanges();
+            return model.Generation.Where(d => (d.a == a && d.b == b && d.c == c)).FirstOrDefault().ID.ToString();
         }
 
         protected void MainMenu0_MenuItemClick(object sender, MenuEventArgs e)
@@ -101,6 +137,15 @@ namespace MTO1
                 Response.Cookies.Add(cookie);
                 Response.Redirect("~/Default.aspx");
             }
+        }
+
+        protected void NextButton_Click(object sender, EventArgs e)
+        {
+            NextButton.Visible = false;
+            AnswerLabel.Visible = false;
+            HttpCookie mark = Request.Cookies["StudentMark"];
+            Response.Cookies["StudentMark"]["EquationNumber"] = (Convert.ToInt32(Response.Cookies["StudentMark"]["EquationNumber"]) + 1).ToString();
+            Response.Cookies["StudentMark"]["EquationID"] = "";
         }
     }
 }

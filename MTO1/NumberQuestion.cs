@@ -6,16 +6,15 @@ namespace MTO1
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Generation")]
-    public partial class Generation
+    [Table("NumberQuestion")]
+    public partial class NumberQuestion
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        public int a { get; set; }
+        [Required]
+        [StringLength(400)]
+        public string Question { get; set; }
 
-        public int b { get; set; }
-
-        public int c { get; set; }
+        public int Answer { get; set; }
     }
 }

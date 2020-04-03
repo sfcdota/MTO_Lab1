@@ -20,28 +20,30 @@ namespace MTO1
 
         protected void RegistrationButton_Click(object sender, EventArgs e)
         {
-            int studentid = 0;
-            foreach (Student c in model.Student.ToList())
+            if (model.Student.Where(c => c.Login == LoginTextBox.Text).FirstOrDefault() != null
+                || model.Teacher.Where(c => c.Login == LoginTextBox.Text).FirstOrDefault() != null)
             {
-                foreach (Student c1 in model.Student.ToList())
-                    if (studentid == c1.ID)
-                        studentid++;
+                ErrorLabel.Text = "Логин уже занят. Попробуйте другой.";
+                ErrorLabel.Visible = true;
             }
-            model.Student.Add(new Student
+            else
             {
-                ID = studentid,
-                Name = NameTextBox.Text,
-                Surname = SurnameTextBox.Text,
-                Patronymic = PatronymicTextBox.Text,
-                Password = PasswordTextBox.Text,
-            });
-            model.SaveChanges();
-            HttpCookie cookie = new HttpCookie("LoginInfo");
-            cookie["Login"] = studentid.ToString();
-            cookie["Password"] = PasswordTextBox.Text;
-            cookie["IsStudent"] = "1";
-            Response.Cookies.Add(cookie);
-            Response.Redirect("~/Main.aspx");
+                model.Student.Add(new Student
+                {
+                    Login = LoginTextBox.Text,
+                    Name = NameTextBox.Text,
+                    Surname = SurnameTextBox.Text,
+                    Patromymic = PatronymicTextBox.Text,
+                    Password = PasswordTextBox.Text,
+                });
+                model.SaveChanges();
+                HttpCookie cookie = new HttpCookie("LoginInfo");
+                cookie["Login"] = LoginTextBox.Text;
+                cookie["Password"] = PasswordTextBox.Text;
+                cookie["IsStudent"] = "1";
+                Response.Cookies.Add(cookie);
+                Response.Redirect("~/Main.aspx");
+            }
         }
     }
 }

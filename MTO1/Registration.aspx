@@ -8,7 +8,7 @@
     <title></title>
     <style type="text/css">
         .auto-style1 {
-            height: 205px;
+            height: 250px;
             margin-top: 310px;
             width: 337px;
             margin-left: 676px;
@@ -24,11 +24,16 @@
         .auto-style5 {
             margin-left: 25px;
             margin-top: 10px;
+            margin-bottom: 0px;
         }
         .auto-style7 {
             margin-left: 30px;
             margin-right: 5px;
             text-align: right;
+        }
+        .auto-style8 {
+            margin-left: 69px;
+            margin-top: 0px;
         }
     </style>
     </head>
@@ -37,6 +42,10 @@
         <div>
         <div class="auto-style1" style="background-color : cornsilk">
             <asp:Label ID="RegistrationLabel" runat="server" CssClass="auto-style2" Text="Регистрация нового пользователя" Height="25px" Width="274px"></asp:Label>
+            <br />
+            <asp:Label ID="LoginLabel" runat="server" CssClass="auto-style7" Height="25px" Text="Логин" Width="110px"></asp:Label>
+            <asp:TextBox ID="LoginTextBox" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredNameValidator0" runat="server" ControlToValidate="LoginTextBox" ErrorMessage="Поле не может быть пустым." ToolTip="Поле не может быть пустым.">*</asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="NameLabel" runat="server" CssClass="auto-style7" Height="25px" Text="Имя" Width="110px"></asp:Label>
             <asp:TextBox ID="NameTextBox" runat="server"></asp:TextBox>
@@ -60,6 +69,8 @@
             <br />
             <asp:Button ID="RegistrationButton" runat="server" BackColor="#D9ECFF" CssClass="auto-style5" Height="25px" Text="Регистрация" OnClick="RegistrationButton_Click" />
             <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="ConfirmPasswordTextBox" ControlToValidate="PasswordTextBox" CssClass="auto-style4" ErrorMessage="Пароли не совпадают" ForeColor="#FF3300" Height="20px"></asp:CompareValidator>
+            <br />
+            <asp:Label ID="ErrorLabel" runat="server" CssClass="auto-style8" ForeColor="Red" Text="Label" Visible="False" Width="200px"></asp:Label>
             <br />
         </div>
         </div>

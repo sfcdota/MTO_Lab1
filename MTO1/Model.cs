@@ -12,17 +12,17 @@ namespace MTO1
 		{
 		}
 
+		public virtual DbSet<ChoiceQuestion> ChoiceQuestion { get; set; }
+		public virtual DbSet<ComplianceQuestion> ComplianceQuestion { get; set; }
 		public virtual DbSet<Generation> Generation { get; set; }
+		public virtual DbSet<MultipleChoiceQuestion> MultipleChoiceQuestion { get; set; }
+		public virtual DbSet<NumberQuestion> NumberQuestion { get; set; }
 		public virtual DbSet<Student> Student { get; set; }
-		public virtual DbSet<Task> Task { get; set; }
 		public virtual DbSet<Teacher> Teacher { get; set; }
+		public virtual DbSet<TextQuestion> TextQuestion { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Student>()
-				.HasMany(e => e.Generation)
-				.WithRequired(e => e.Student)
-				.WillCascadeOnDelete(false);
 		}
 	}
 }

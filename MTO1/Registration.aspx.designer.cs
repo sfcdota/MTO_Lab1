@@ -33,6 +33,33 @@ namespace MTO1
 		protected global::System.Web.UI.WebControls.Label RegistrationLabel;
 
 		/// <summary>
+		/// LoginLabel control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label LoginLabel;
+
+		/// <summary>
+		/// LoginTextBox control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox LoginTextBox;
+
+		/// <summary>
+		/// RequiredNameValidator0 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredNameValidator0;
+
+		/// <summary>
 		/// NameLabel control.
 		/// </summary>
 		/// <remarks>
@@ -184,5 +211,14 @@ namespace MTO1
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
+
+		/// <summary>
+		/// ErrorLabel control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label ErrorLabel;
 	}
 }

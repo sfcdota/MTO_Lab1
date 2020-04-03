@@ -9,22 +9,23 @@ namespace MTO1
     [Table("Teacher")]
     public partial class Teacher
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        [Key]
+        [StringLength(50)]
+        public string Login { get; set; }
 
         [Required]
-        [StringLength(25)]
+        [StringLength(50)]
         public string Name { get; set; }
 
         [Required]
-        [StringLength(25)]
+        [StringLength(50)]
         public string Surname { get; set; }
 
-        [StringLength(25)]
+        [StringLength(50)]
         public string Patronymic { get; set; }
 
         [Required]
-        [StringLength(25)]
+        [StringLength(50)]
         public string Password { get; set; }
     }
 }
