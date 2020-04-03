@@ -9,6 +9,7 @@ namespace MTO1
     [Table("TextQuestion")]
     public partial class TextQuestion
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         [Required]

@@ -110,7 +110,7 @@
                 <br />
                 <br />
             <asp:Label ID="Question1EnterLabel" runat="server" CssClass="auto-style4" Height="30px" Text="Введите ответ в текстовое поле:" Width="272px"></asp:Label>
-                <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px" AutoCompleteType="Disabled" TextMode="Number" CssClass="auto-style11"></asp:TextBox>
+                <asp:TextBox ID="AnswerTextBox1" runat="server" Height="25px" Width="368px" AutoCompleteType="Disabled" CssClass="auto-style11"></asp:TextBox>
                 <br />
                 <asp:Button ID="AnswerButton" runat="server" Height="25px" Text="Ответить" CssClass="auto-style9" OnClick="GetAnswerButton1_Click" />
                 <asp:Label ID="AnswerLabel" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>

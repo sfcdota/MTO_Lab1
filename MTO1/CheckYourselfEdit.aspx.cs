@@ -30,19 +30,27 @@ namespace MTO1
 				ViewState["FirstTime"] = 1;
 			}
 		}
+
 		protected void GetAnswerButton1_Click(object sender, EventArgs e)
 		{
 			if (DropDownList1.SelectedIndex == 0)
 			{
+				int id = 0;
+				foreach (TextQuestion c in task1)
+				{
+					foreach (TextQuestion c1 in task1)
+						if (id == c1.ID)
+							id++;
+				}
 				TextQuestion textquestion = new TextQuestion
 				{
-					ID = 228,
+					ID = id,
 					Question = Question1DescriptionTextBox.Text,
 					Answer = Question1AnswerTextBox.Text,
 				};
 				task1.Add(textquestion);
 				model.TextQuestion.Add(textquestion);
-				DropDownList1.Items.Add(new ListItem("ID" + textquestion.ID + ". " + textquestion.Answer, textquestion.ID.ToString()));
+				DropDownList1.Items.Add(new ListItem("ID" + textquestion.ID + ". " + textquestion.Question, textquestion.ID.ToString()));
 				DropDownList1.SelectedValue = textquestion.ID.ToString();
 			}
 			else
@@ -64,9 +72,16 @@ namespace MTO1
 		{
 			if (DropDownList2.SelectedIndex == 0)
 			{
+				int id = 0;
+				foreach (NumberQuestion c in task2)
+				{
+					foreach (NumberQuestion c1 in task2)
+						if (id == c1.ID)
+							id++;
+				}
 				NumberQuestion numberquestion = new NumberQuestion
 				{
-					ID = 228,
+					ID = id,
 					Question = Question2DescriptionTextBox.Text,
 					Answer = Convert.ToInt32(Question2AnswerTextBox.Text),
 				};
@@ -98,9 +113,16 @@ namespace MTO1
 				for (int i = 0; i < Question3RadioButtonList.Items.Count; i++)
 					if (Question3RadioButtonList.Items[i].Selected)
 						correctAnswer = i;
+				int id = 0;
+				foreach (ChoiceQuestion c in task3)
+				{
+					foreach (ChoiceQuestion c1 in task3)
+						if (id == c1.ID)
+							id++;
+				}
 				ChoiceQuestion task = new ChoiceQuestion
 				{
-					ID = 228,
+					ID = id,
 					Question = Question3DescriptionTextBox.Text,
 					Answer1 = Question3AnswerTextBox1.Text,
 					Answer2 = Question3AnswerTextBox2.Text,
@@ -160,9 +182,16 @@ namespace MTO1
 		{
 			if (DropDownList4.SelectedIndex == 0)
 			{
+				int id = 0;
+				foreach (MultipleChoiceQuestion c in task4)
+				{
+					foreach (MultipleChoiceQuestion c1 in task4)
+						if (id == c1.ID)
+							id++;
+				}
 				MultipleChoiceQuestion task = new MultipleChoiceQuestion
 				{
-					ID = 228,
+					ID = id,
 					Answer1 = Question4AnswerTextBox1.Text,
 					Answer2 = Question4AnswerTextBox2.Text,
 					Answer3 = Question4AnswerTextBox3.Text,
@@ -219,9 +248,16 @@ namespace MTO1
 		{
 			if (DropDownList5.SelectedIndex == 0)
 			{
+				int id = 0;
+				foreach (ComplianceQuestion c in task5)
+				{
+					foreach (ComplianceQuestion c1 in task5)
+						if (id == c1.ID)
+							id++;
+				}
 				ComplianceQuestion task = new ComplianceQuestion
 				{
-					ID = 228,
+					ID = id,
 					Question1 = Question5TextBox1.Text,
 					Question2 = Question5TextBox2.Text,
 					Question3 = Question5TextBox3.Text,

@@ -9,6 +9,7 @@ namespace MTO1
     [Table("ChoiceQuestion")]
     public partial class ChoiceQuestion
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         [Required]

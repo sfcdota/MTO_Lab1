@@ -78,7 +78,7 @@ namespace MTO1
             else
             {
                 int currentid = questionid[2];
-                if (Question3RadioButtonList.Items[model.ChoiceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer].Selected)
+                if (Question3RadioButtonList.Items[model.ChoiceQuestion.Where(c => c.ID == currentid).FirstOrDefault().CorrectAnswer - 1].Selected)
                 {
                     AnswerLabel3.Text = "Ответ верный";
                     AnswerLabel3.ForeColor = System.Drawing.Color.Green;

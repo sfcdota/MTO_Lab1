@@ -44,27 +44,27 @@
             <asp:Label ID="RegistrationLabel" runat="server" CssClass="auto-style2" Text="Регистрация нового пользователя" Height="25px" Width="274px"></asp:Label>
             <br />
             <asp:Label ID="LoginLabel" runat="server" CssClass="auto-style7" Height="25px" Text="Логин" Width="110px"></asp:Label>
-            <asp:TextBox ID="LoginTextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="LoginTextBox" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredNameValidator0" runat="server" ControlToValidate="LoginTextBox" ErrorMessage="Поле не может быть пустым." ToolTip="Поле не может быть пустым.">*</asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="NameLabel" runat="server" CssClass="auto-style7" Height="25px" Text="Имя" Width="110px"></asp:Label>
-            <asp:TextBox ID="NameTextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="NameTextBox" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredNameValidator" runat="server" ControlToValidate="NameTextBox" ErrorMessage="Поле не может быть пустым." ToolTip="Поле не может быть пустым.">*</asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="SurnameLabel" runat="server" CssClass="auto-style7" Height="25px" Text="Фамилия" Width="110px"></asp:Label>
-            <asp:TextBox ID="SurnameTextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="SurnameTextBox" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredSurnameValidator" runat="server" ControlToValidate="SurnameTextBox" ErrorMessage="Поле не может быть пустым." ToolTip="Поле не может быть пустым.">*</asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="PatronymicLabel" runat="server" CssClass="auto-style7" Height="25px" Text="Отчество" Width="110px"></asp:Label>
-            <asp:TextBox ID="PatronymicTextBox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="PatronymicTextBox" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredPatronymicValidator" runat="server" ControlToValidate="PatronymicTextBox" ErrorMessage="Поле не может быть пустым." ToolTip="Поле не может быть пустым.">*</asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="PatronymicLabel0" runat="server" CssClass="auto-style7" Height="25px" Text="Пароль" Width="110px"></asp:Label>
-            <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:TextBox ID="PasswordTextBox" runat="server" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredPasswordValidator" runat="server" ControlToValidate="PasswordTextBox" ErrorMessage="Поле не может быть пустым." ToolTip="Поле не может быть пустым.">*</asp:RequiredFieldValidator>
             <br />
             <asp:Label ID="PatronymicLabel1" runat="server" CssClass="auto-style7" Height="25px" Text="Повтор пароля" Width="110px"></asp:Label>
-            <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" TextMode="Password" AutoCompleteType="Disabled"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredConfirmPasswordValidator" runat="server" ControlToValidate="ConfirmPasswordTextBox" ErrorMessage="Поле не может быть пустым." ToolTip="Поле не может быть пустым.">*</asp:RequiredFieldValidator>
             <br />
             <asp:Button ID="RegistrationButton" runat="server" BackColor="#D9ECFF" CssClass="auto-style5" Height="25px" Text="Регистрация" OnClick="RegistrationButton_Click" />

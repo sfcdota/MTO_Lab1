@@ -20,9 +20,7 @@ namespace MTO1
 		public virtual DbSet<Student> Student { get; set; }
 		public virtual DbSet<Teacher> Teacher { get; set; }
 		public virtual DbSet<TextQuestion> TextQuestion { get; set; }
+		public virtual DbSet<GenerationTask> GenerationTask { get; set; }
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		{
-		}
 	}
 }

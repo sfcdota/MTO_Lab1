@@ -37,6 +37,15 @@ namespace MTO1
                 cookie.Expires = DateTime.Now.AddDays(-30);
                 Response.Cookies.Add(cookie);
                 Response.Redirect("~/Default.aspx");
+
+
+                cookie = Request.Cookies["StudentMark"];
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddDays(-30);
+                    Response.Cookies.Add(cookie);
+                    Response.Redirect("~/Default.aspx");
+                }
             }
         }
     }
