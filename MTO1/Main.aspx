@@ -16,6 +16,9 @@
             padding:10px;
             resize : none;
         }
+        .auto-style8 {
+            margin-left: 546px;
+        }
         </style>
 </head>
 <body>
@@ -36,6 +39,7 @@
             <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
             <StaticSelectedStyle BackColor="#5D7B9D" />
         </asp:Menu>
+        <asp:Label ID="Label1" runat="server" CssClass="auto-style8" Font-Size="40pt" Height="60px" Text="Вы авторизовались по логину(ID) #"></asp:Label>
     </form>
 </body>
 </html>

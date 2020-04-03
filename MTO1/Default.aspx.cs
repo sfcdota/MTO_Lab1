@@ -29,7 +29,7 @@ namespace MTO1
                 HttpCookie cookie = new HttpCookie("LoginInfo");
                 cookie["Login"] = LoginForm.UserName;
                 cookie["Password"] = LoginForm.Password;
-                cookie["IsStudent"] = model.Student.Where(c => c.ID == id).FirstOrDefault() != null ? "1" : "0";
+                cookie["IsStudent"] = model.Student.Where(c => c.ID == id).Where(c => c.Password == LoginForm.Password).FirstOrDefault() != null ? "1" : "0";
                 cookie.Expires = DateTime.Now.AddDays(30);
                 Response.Cookies.Add(cookie);
                 Response.Redirect("~/Main.aspx");

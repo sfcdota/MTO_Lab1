@@ -14,13 +14,18 @@ namespace MTO1
             HttpCookie cookie = Request.Cookies["LoginInfo"];
             if (cookie == null)
                 Response.Redirect("~/Default.aspx");
-            if (cookie["IsStudent"] == "0" && ViewState["FirstTime"] == null)
+            else
             {
-                MenuItem item = new MenuItem();
-                item.Value = "Редактирование";
-                item.NavigateUrl = "~/CheckYourselfEdit.aspx";
-                MainMenu0.Items[0].ChildItems[0].ChildItems.Add(item);
-                ViewState["FirstTime"] = 1;
+                Label1.Text = "Вы авторизовались под ID = " + cookie["Login"] + ". Запомните его!!!";
+                Label1.ForeColor = System.Drawing.Color.Red;
+                if (cookie["IsStudent"] == "0" && ViewState["FirstTime"] == null)
+                {
+                    MenuItem item = new MenuItem();
+                    item.Value = "Редактирование";
+                    item.NavigateUrl = "~/CheckYourselfEdit.aspx";
+                    MainMenu0.Items[0].ChildItems[0].ChildItems.Add(item);
+                    ViewState["FirstTime"] = 1;
+                }
             }
         }
 
