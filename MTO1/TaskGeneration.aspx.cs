@@ -23,16 +23,19 @@ namespace MTO1
             else
             {
                 string login = cookie["Login"];
-                if (model.Student.Where(c => (c.Mark == nullint && c.Login == login)).FirstOrDefault() != null)
+                if (model.GenerationTask.Where(c => c.StudentLogin == login).FirstOrDefault() == null)
                 {
                     model.GenerationTask.Add(new GenerationTask
                     {
                         StudentLogin = cookie["Login"],
                         GenerationID1 = GenerateEquationID(),
                         GenerationID2 = GenerateEquationID(),
-                        Finished = false
                     });
                     model.SaveChanges();
+                }
+                if(model.Student.Where(c => c.Login == login).FirstOrDefault().Mark == null ||
+                    model.Student.Where(c => c.Login == login).FirstOrDefault().Mark == nullint)
+                { 
                     int id = model.GenerationTask.Where(d => d.StudentLogin == login).FirstOrDefault().GenerationID1;
                     Generation generation = model.Generation.Where(f => f.ID == id).FirstOrDefault();
                     EquationLabel.Text = generation.a.ToString() + " * x * x " + (generation.b >= 0 ? "+ " + generation.b + "x " : generation.b + "x ")
@@ -45,7 +48,7 @@ namespace MTO1
                     Generation generation = model.Generation.Where(f => f.ID == id).FirstOrDefault();
                     EquationLabel.Text = generation.a.ToString() + " * x * x " + (generation.b >= 0 ? "+ " + generation.b + "x " : generation.b + "x ")
                         + (generation.c >= 0 ? "+ " + generation.c : generation.c + " ");
-                    if (model.GenerationTask.Where(c => c.StudentLogin == login).FirstOrDefault().Finished)
+                    if (model.Student.Where(c => c.Login == login).FirstOrDefault().Finished)
                     {
                         AnswerButton.Enabled = false;
                         AnswerTextBox1.Enabled = false;
@@ -80,12 +83,12 @@ namespace MTO1
                     model.Student.Where(c => c.Login == login).FirstOrDefault().Mark + 50 :
                     model.Student.Where(c => c.Login == login).FirstOrDefault().Mark;
                 model.Student.Where(c => c.Login == login).FirstOrDefault().Last_Test_Date = DateTime.Now.ToUniversalTime();
+                model.Student.Where(c => c.Login == login).FirstOrDefault().Finished = true;
                 model.SaveChanges();
-                GenerationTask generationTask = model.GenerationTask.Where(c => c.StudentLogin == login).FirstOrDefault();
-                generationTask.Finished = true;
                 AnswerLabel.Text = "Ваш балл за тест равен " + model.Student.Where(c => c.Login == login).FirstOrDefault().Mark + "/100.";
                 AnswerLabel.Visible = true;
                 AnswerButton.Enabled = false;
+                AnswerTextBox1.Enabled = false;
             }
             model.SaveChanges();
         }

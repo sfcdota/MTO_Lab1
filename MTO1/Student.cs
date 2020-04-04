@@ -31,5 +31,7 @@ namespace MTO1
         public DateTime? Last_Test_Date { get; set; }
 
         public int? Mark { get; set; }
+
+        public bool Finished { get; set; }
     }
 }

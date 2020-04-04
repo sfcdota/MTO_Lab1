@@ -35,7 +35,8 @@ namespace MTO1
                     Surname = SurnameTextBox.Text,
                     Patromymic = PatronymicTextBox.Text,
                     Password = PasswordTextBox.Text,
-                });
+                    Finished = false,
+                }) ;
                 model.SaveChanges();
                 HttpCookie cookie = new HttpCookie("LoginInfo");
                 cookie["Login"] = LoginTextBox.Text;
