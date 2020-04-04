@@ -24,8 +24,8 @@
             position:relative;
             width: 264px;
             height: 155px;
-            margin-left : 447px;
-            margin-top: 73px;
+            margin-left : 480px;
+            margin-top: 0px;
         }
         .auto-style4 {
             margin-left:200px;
@@ -40,6 +40,8 @@
             margin-top: 15px;
             width: 1201px;
             margin-bottom: 47px;
+            left: 0px;
+            top: 0px;
         }
         .auto-style7 {
             position: relative;
@@ -49,7 +51,7 @@
             padding:10px;
         }
         .auto-style8 {
-            margin-left: 497px;
+            margin-left: 545px;
             margin-top: 0px;
             margin-bottom: 0px;
         }
@@ -76,7 +78,7 @@
         }
         </style>
 </head>
-<body style="margin-left: 273px">
+<body style="margin-left: 275px; margin-bottom: 0px;">
     <form id="form2" runat="server">
         <div class="auto-style3">
         <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#E3EAEB" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#666666" StaticSubMenuIndent="10px" OnMenuItemClick="MainMenu0_MenuItemClick">

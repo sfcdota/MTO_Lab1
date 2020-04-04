@@ -21,6 +21,8 @@ namespace MTO1
 		{
 			Page.MaintainScrollPositionOnPostBack = true;
 			HttpCookie cookie = Request.Cookies["LoginInfo"];
+			if (cookie == null)
+				Response.Redirect("~/Default.aspx");
 			if (cookie["IsStudent"] == "0" && ViewState["FirstTime"] == null)
 			{
 				MenuItem item = new MenuItem();

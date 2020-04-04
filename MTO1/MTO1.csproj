@@ -83,6 +83,7 @@
     <Content Include="TaskGeneration.aspx" />
     <Content Include="TaskGenerationResults.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckYourself.aspx.cs">
@@ -145,6 +146,13 @@
     </Compile>
     <Compile Include="Teacher.cs" />
     <Compile Include="TextQuestion.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

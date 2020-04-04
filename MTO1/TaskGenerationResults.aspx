@@ -9,13 +9,9 @@
 
 
         .auto-style3 {
-            position:absolute;
-            left: 30px;
-            top: 48px;
             width: 264px;
             height: 155px;
-            right: 1114px;
-            resize : none;
+            margin-left: 480px;
         }
         .auto-style7 {
             position: relative;
@@ -26,13 +22,10 @@
             resize : none;
         }
         .auto-style6 {
-            position: relative;
-            margin-top: 78px;
-            left: 90px;
-            top: -48px;
+            margin-top: 15px;
             width: 1201px;
-            resize : none;
-            margin-left: 270px;
+            margin-left: 0px;
+            margin-bottom: 47px;
         }
         .auto-style8 {
             margin-left: 497px;
@@ -42,33 +35,32 @@
         .auto-style5 {
             width: 1150px;
             height: 282px;
-            margin-left: 360px;
-            resize : none;
+            margin-left: 0px;
         }
         .auto-style9 {
             position: relative;
             width: 1123px;
             resize : none;
         }
+        .auto-style11 {
+            margin-left: 365px;
+            margin-top: 24px;
+        }
         .auto-style10 {
             margin-left: 480px;
             margin-top: 0px;
             resize : none;
         }
-        .auto-style11 {
-            margin-left: 361px;
-            margin-top: 19px;
-        }
-    </style>
+        </style>
 </head>
-<body>
-    <form id="form2" runat="server">
+<body style="height: 641px; margin-left: 275px">
+    <form id="form1" runat="server">
         <div class="auto-style3">
-        <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="1.3em" ForeColor="#7C6F57" StaticSubMenuIndent="10px" OnMenuItemClick="MainMenu0_MenuItemClick">
-            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+        <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#E3EAEB" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#666666" StaticSubMenuIndent="10px" OnMenuItemClick="MainMenu0_MenuItemClick">
+            <DynamicHoverStyle BackColor="#666666" ForeColor="White" />
             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <DynamicMenuStyle BackColor="#F7F6F3" />
-            <DynamicSelectedStyle BackColor="#5D7B9D" />
+            <DynamicMenuStyle BackColor="#E3EAEB" />
+            <DynamicSelectedStyle BackColor="#1C5E55" />
             <Items>
                 <asp:MenuItem Selectable="False" Text="Выбрать модуль" Value="Выбрать модуль">
                     <asp:MenuItem Text="Проверь себя" Value="Проверь себя" NavigateUrl="~/CheckYourself.aspx"></asp:MenuItem>
@@ -76,9 +68,9 @@
                 </asp:MenuItem>
                 <asp:MenuItem Text="Выйти" Value="Выйти"></asp:MenuItem>
             </Items>
-            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
-            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <StaticSelectedStyle BackColor="#5D7B9D" />
+            <StaticHoverStyle BackColor="#666666" ForeColor="White" />
+            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" Font-Size="20pt" />
+            <StaticSelectedStyle BackColor="#1C5E55" />
         </asp:Menu>
         </div>
             <div class="auto-style6">

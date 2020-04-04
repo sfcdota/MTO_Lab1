@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CheckYourselfEdit.aspx.cs" Inherits="MTO1.CheckYourselfEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="MTO1.WebForm1" %>
 
 <!DOCTYPE html>
 
@@ -39,6 +39,36 @@
             height: 748px;
             margin-left: 0px;
         }
+        .auto-style2 {
+            position: relative;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+        }
+        .auto-style4 {
+            margin-left:200px;
+        }
+        .auto-style11 {
+            resize:none;
+        }
+        .auto-style9 {
+            margin-left: 200px;
+            margin-right: 29px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        .auto-style14 {
+            margin-left: 193px;
+        }
+        .auto-style12 {
+            position: absolute;
+            padding-left: 180px;
+        }
+        .auto-style10 {
+            margin-left: 200px;
+
+        }
         .auto-style31 {
             position: relative;
             background: #fff;
@@ -64,33 +94,14 @@
             padding-bottom: 5px;
             resize : none;
         }
-        .auto-style4 {
-            margin-left:200px;
-        }
         .auto-style24 {
             margin-left: 0px;
             resize : none;
             margin-top: 0px;
         }
-        .auto-style9 {
-            margin-left: 200px;
-            margin-right: 29px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            margin-bottom: 5px;
-        }
-        .auto-style2 {
-            position: relative;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
-        }
         .auto-style17 {
             margin-left: 0px;
             resize : none;
-        }
-        .auto-style14 {
-            margin-left: 193px;
         }
         .auto-style21 {
             position: absolute;
@@ -146,10 +157,6 @@
             margin-left: 228px;
             resize : none;
         }
-        .auto-style12 {
-            position: absolute;
-            padding-left: 180px;
-        }
         .auto-style18 {
             margin-left: 207px;
             resize : none;
@@ -164,16 +171,9 @@
             padding-bottom: 5px;
             left: -1px;
         }
-        .auto-style10 {
-            margin-left: 200px;
-
-        }
-        .auto-style11 {
-            resize:none;
-        }
         </style>
 </head>
-<body style="margin-left: 275px; height: 1825px;">
+<body style="height: 1825px; margin-left: 275px">
     <form id="form2" runat="server">
         <div class="auto-style3">
         <asp:Menu ID="MainMenu0" runat="server" CssClass="auto-style7" Height="80px" BackColor="#E3EAEB" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#666666" StaticSubMenuIndent="10px" OnMenuItemClick="MainMenu0_MenuItemClick">
@@ -339,6 +339,10 @@
                 <asp:Button ID="EditGetAnswerButton5" runat="server" Height="25px" Text="Изменить/Добавить" CssClass="auto-style9" OnClick="GetAnswerButton5_Click" />
                 <asp:Label ID="EditResponseLabel5" runat="server" Height="25px" Text="Label" Visible="False"></asp:Label>
             </div>
+        </div>
+    </form>
+    <form id="form1" runat="server">
+        <div>
         </div>
     </form>
 </body>
